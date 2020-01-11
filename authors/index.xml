@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Authors | Academic</title>
+    <title>Authors | Kartik Patath</title>
     <link>/authors/</link>
       <atom:link href="/authors/index.xml" rel="self" type="application/rss+xml" />
     <description>Authors</description>
@@ -17,6 +17,158 @@
       <link>/authors/admin/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>/authors/admin/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title> R Arun Srivatsan</title>
+      <link>/authors/r-arun-srivatsan/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/authors/r-arun-srivatsan/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title> R. A. Srivatsan</title>
+      <link>/authors/r.-a.-srivatsan/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/authors/r.-a.-srivatsan/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>H. Choset</title>
+      <link>/authors/h.-choset/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/authors/h.-choset/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>H. Salman</title>
+      <link>/authors/h.-salman/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/authors/h.-salman/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hadi Salman</title>
+      <link>/authors/hadi-salman/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/authors/hadi-salman/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Howie Choset</title>
+      <link>/authors/howie-choset/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/authors/howie-choset/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>J. Qian</title>
+      <link>/authors/j.-qian/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/authors/j.-qian/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Jianing Qian</title>
+      <link>/authors/jianing-qian/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/authors/jianing-qian/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>K. Patath</title>
+      <link>/authors/k.-patath/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/authors/k.-patath/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Kartik Patath</title>
+      <link>/authors/kartik-patath/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/authors/kartik-patath/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>L. Li</title>
+      <link>/authors/l.-li/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/authors/l.-li/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Lu Li</title>
+      <link>/authors/lu-li/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/authors/lu-li/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>M. Xu</title>
+      <link>/authors/m.-xu/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/authors/m.-xu/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mengyun Xu</title>
+      <link>/authors/mengyun-xu/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/authors/mengyun-xu/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>N. Zevallos</title>
+      <link>/authors/n.-zevallos/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/authors/n.-zevallos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Nicolas Zevallos</title>
+      <link>/authors/nicolas-zevallos/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/authors/nicolas-zevallos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R. Arun Srivatsan</title>
+      <link>/authors/r.-arun-srivatsan/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/authors/r.-arun-srivatsan/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>S. Saxena</title>
+      <link>/authors/s.-saxena/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/authors/s.-saxena/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Saumya Saxena</title>
+      <link>/authors/saumya-saxena/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/authors/saumya-saxena/</guid>
       <description></description>
     </item>
     

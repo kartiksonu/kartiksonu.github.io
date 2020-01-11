@@ -3,11 +3,33 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/</loc>
+    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/project/</loc>
+    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/authors/admin/</loc>
   </url>
   
   <url>
-    <loc>/</loc>
+    <loc>/authors/r-arun-srivatsan/</loc>
+  </url>
+  
+  <url>
+    <loc>/authors/r.-a.-srivatsan/</loc>
+  </url>
+  
+  <url>
+    <loc>/publication_types/3/</loc>
+  </url>
+  
+  <url>
+    <loc>/publication/paper4/</loc>
   </url>
   
   <url>
@@ -16,6 +38,66 @@
   
   <url>
     <loc>/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>/publication/paper1/</loc>
+  </url>
+  
+  <url>
+    <loc>/authors/h.-choset/</loc>
+  </url>
+  
+  <url>
+    <loc>/authors/h.-salman/</loc>
+  </url>
+  
+  <url>
+    <loc>/authors/hadi-salman/</loc>
+  </url>
+  
+  <url>
+    <loc>/authors/howie-choset/</loc>
+  </url>
+  
+  <url>
+    <loc>/authors/j.-qian/</loc>
+  </url>
+  
+  <url>
+    <loc>/authors/jianing-qian/</loc>
+  </url>
+  
+  <url>
+    <loc>/authors/k.-patath/</loc>
+  </url>
+  
+  <url>
+    <loc>/authors/kartik-patath/</loc>
+  </url>
+  
+  <url>
+    <loc>/authors/l.-li/</loc>
+  </url>
+  
+  <url>
+    <loc>/authors/lu-li/</loc>
+  </url>
+  
+  <url>
+    <loc>/authors/m.-xu/</loc>
+  </url>
+  
+  <url>
+    <loc>/authors/mengyun-xu/</loc>
+  </url>
+  
+  <url>
+    <loc>/authors/n.-zevallos/</loc>
+  </url>
+  
+  <url>
+    <loc>/authors/nicolas-zevallos/</loc>
   </url>
   
   <url>
@@ -31,11 +113,31 @@
   </url>
   
   <url>
+    <loc>/authors/r.-arun-srivatsan/</loc>
+  </url>
+  
+  <url>
     <loc>/talk/</loc>
   </url>
   
   <url>
+    <loc>/authors/s.-saxena/</loc>
+  </url>
+  
+  <url>
+    <loc>/authors/saumya-saxena/</loc>
+  </url>
+  
+  <url>
+    <loc>/publication/paper3/</loc>
+  </url>
+  
+  <url>
     <loc>/tags/</loc>
+  </url>
+  
+  <url>
+    <loc>/publication/paper2/</loc>
   </url>
   
 </urlset>
