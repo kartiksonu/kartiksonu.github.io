@@ -12,5 +12,37 @@
       <link>/tags/</link>
     </image>
     
+    <item>
+      <title>Autonomous Navigation</title>
+      <link>/tags/autonomous-navigation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/tags/autonomous-navigation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>OGRE</title>
+      <link>/tags/ogre/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/tags/ogre/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ROS</title>
+      <link>/tags/ros/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/tags/ros/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SLAM</title>
+      <link>/tags/slam/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/tags/slam/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>
