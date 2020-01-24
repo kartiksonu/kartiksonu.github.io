@@ -33,6 +33,15 @@
     </item>
     
     <item>
+      <title>DQN - breakout</title>
+      <link>/project/dqn/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/project/dqn/</guid>
+      <description>&lt;p&gt;As a part of Reinforcemnt learning course work I implemented a dueling DQN network to train the an agent to play Atari-breakout-v4. The training was performed using Google Cloud Platform (GCP).&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Dynamic-Texturing</title>
       <link>/project/dynamic-texturing/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
