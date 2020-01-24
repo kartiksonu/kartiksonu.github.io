@@ -23,6 +23,10 @@
   </url>
   
   <url>
+    <loc>/tags/ambf/</loc>
+  </url>
+  
+  <url>
     <loc>/authors/</loc>
   </url>
   
@@ -123,6 +127,14 @@
   </url>
   
   <url>
+    <loc>/tags/openai-gym/</loc>
+  </url>
+  
+  <url>
+    <loc>/tags/opencv/</loc>
+  </url>
+  
+  <url>
     <loc>/post/</loc>
   </url>
   
@@ -139,11 +151,23 @@
   </url>
   
   <url>
+    <loc>/tags/python/</loc>
+  </url>
+  
+  <url>
+    <loc>/tags/pytorch/</loc>
+  </url>
+  
+  <url>
     <loc>/authors/r.-arun-srivatsan/</loc>
   </url>
   
   <url>
     <loc>/talk/</loc>
+  </url>
+  
+  <url>
+    <loc>/tags/reinforcement-learning/</loc>
   </url>
   
   <url>
