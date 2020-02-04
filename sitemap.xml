@@ -59,6 +59,10 @@
   </url>
   
   <url>
+    <loc>/tags/gazebo/</loc>
+  </url>
+  
+  <url>
     <loc>/authors/h.-choset/</loc>
   </url>
   
@@ -123,7 +127,15 @@
   </url>
   
   <url>
+    <loc>/tags/navigation/</loc>
+  </url>
+  
+  <url>
     <loc>/authors/nicolas-zevallos/</loc>
+  </url>
+  
+  <url>
+    <loc>/project/obstacle-avoidance/</loc>
   </url>
   
   <url>

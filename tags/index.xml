@@ -29,6 +29,22 @@
     </item>
     
     <item>
+      <title>Gazebo</title>
+      <link>/tags/gazebo/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/tags/gazebo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Navigation</title>
+      <link>/tags/navigation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/tags/navigation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>OGRE</title>
       <link>/tags/ogre/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

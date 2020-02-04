@@ -86,6 +86,15 @@
     </item>
     
     <item>
+      <title>Obstacle avoidance</title>
+      <link>/project/obstacle-avoidance/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/project/obstacle-avoidance/</guid>
+      <description>&lt;p&gt;As a part of advance robot navigation, I designed and simulated a random walker which avoids obstacles and moves randomly inside a custom made gazebo world. P.S The git reopsitory has a detailed tutorial on how o run this from scratch&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>SARA</title>
       <link>/project/sara/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
