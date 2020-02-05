@@ -31,5 +31,15 @@
 </description>
     </item>
     
+    <item>
+      <title>DQN - breakout</title>
+      <link>/project/dynamic-texturing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/project/dynamic-texturing/</guid>
+      <description>&lt;p&gt;Robot-assisted minimally invasive surgery has the potential to perform a variety of surgical procedures with precision, flexibility and control. However, lack of direct visual access can result in a cognitive overload for the surgeons. To overcome this issue, we have developed an augmented reality display that shows critical information overlaid on intraoperative model. We demonstrate our capabilities by dynamically updating the stiffness distribution over the surface of the anatomy being palpated intraoperatively.&lt;/p&gt;
+&lt;p&gt;Used the concepts of texture mapping and projective geometry on 3D models, to wrap the stiffness maps of a surface on to its 3D model.  Also developed a user-friendly plugin interface for dynamic texturing in the ROS visualizer (Rviz) and generated stereo views which augment the 3D models inside the visualizer, in the surgical space, using Rviz camera plug-in.&lt;/p&gt;
+</description>
+    </item>
+    
   </channel>
 </rss>
