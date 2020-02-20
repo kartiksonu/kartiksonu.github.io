@@ -5,7 +5,7 @@
     <link>/tags/navigation/</link>
       <atom:link href="/tags/navigation/index.xml" rel="self" type="application/rss+xml" />
     <description>Navigation</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 27 Jan 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>Navigation</title>
@@ -15,9 +15,9 @@
     <item>
       <title>Obstacle avoidance</title>
       <link>/project/obstacle-avoidance/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 27 Jan 2020 00:00:00 +0000</pubDate>
       <guid>/project/obstacle-avoidance/</guid>
-      <description>&lt;p&gt;As a part of advance robot navigation, I designed and simulated a random walker which avoids obstacles and moves randomly inside a custom made gazebo world. P.S The git reopsitory has a detailed tutorial on how o run this from scratch&lt;/p&gt;
+      <description>&lt;p&gt;As a part of Advance Robot Navigation course assignment, I designed and simulated a random walker which avoids obstacles and moves randomly inside a custom made gazebo world. P.S The git reopsitory has a detailed tutorial on how o run this from scratch&lt;/p&gt;
 </description>
     </item>
     

@@ -3,6 +3,81 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/tags/gazebo/</loc>
+    <lastmod>2020-01-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2020-01-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/navigation/</loc>
+    <lastmod>2020-01-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/project/obstacle-avoidance/</loc>
+    <lastmod>2020-01-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/project/</loc>
+    <lastmod>2020-01-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/ros/</loc>
+    <lastmod>2020-01-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2020-01-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/project/curiosity-based-learning/</loc>
+    <lastmod>2019-11-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/openai-gym/</loc>
+    <lastmod>2019-11-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/pytorch/</loc>
+    <lastmod>2019-11-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/reinforcement-learning/</loc>
+    <lastmod>2019-11-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/project/dqn/</loc>
+    <lastmod>2019-09-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/autonomous-navigation/</loc>
+    <lastmod>2016-04-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/project/butler/</loc>
+    <lastmod>2016-04-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/slam/</loc>
+    <lastmod>2016-04-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/authors/admin/</loc>
   </url>
   
@@ -31,35 +106,11 @@
   </url>
   
   <url>
-    <loc>/tags/autonomous-navigation/</loc>
-  </url>
-  
-  <url>
-    <loc>/project/butler/</loc>
-  </url>
-  
-  <url>
     <loc>/categories/</loc>
   </url>
   
   <url>
-    <loc>/project/curiosity-based-learning/</loc>
-  </url>
-  
-  <url>
-    <loc>/project/dqn/</loc>
-  </url>
-  
-  <url>
-    <loc>/project/dynamic-texturing/</loc>
-  </url>
-  
-  <url>
     <loc>/publication/paper1/</loc>
-  </url>
-  
-  <url>
-    <loc>/tags/gazebo/</loc>
   </url>
   
   <url>
@@ -103,10 +154,6 @@
   </url>
   
   <url>
-    <loc>/</loc>
-  </url>
-  
-  <url>
     <loc>/authors/l.-li/</loc>
   </url>
   
@@ -127,23 +174,11 @@
   </url>
   
   <url>
-    <loc>/tags/navigation/</loc>
-  </url>
-  
-  <url>
     <loc>/authors/nicolas-zevallos/</loc>
   </url>
   
   <url>
-    <loc>/project/obstacle-avoidance/</loc>
-  </url>
-  
-  <url>
     <loc>/tags/ogre/</loc>
-  </url>
-  
-  <url>
-    <loc>/tags/openai-gym/</loc>
   </url>
   
   <url>
@@ -152,10 +187,6 @@
   
   <url>
     <loc>/post/</loc>
-  </url>
-  
-  <url>
-    <loc>/project/</loc>
   </url>
   
   <url>
@@ -171,23 +202,11 @@
   </url>
   
   <url>
-    <loc>/tags/pytorch/</loc>
-  </url>
-  
-  <url>
     <loc>/authors/r.-arun-srivatsan/</loc>
   </url>
   
   <url>
     <loc>/talk/</loc>
-  </url>
-  
-  <url>
-    <loc>/tags/reinforcement-learning/</loc>
-  </url>
-  
-  <url>
-    <loc>/tags/ros/</loc>
   </url>
   
   <url>
@@ -207,15 +226,7 @@
   </url>
   
   <url>
-    <loc>/tags/slam/</loc>
-  </url>
-  
-  <url>
     <loc>/publication/paper3/</loc>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
   </url>
   
   <url>

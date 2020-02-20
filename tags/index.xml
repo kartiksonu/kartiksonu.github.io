@@ -5,7 +5,7 @@
     <link>/tags/</link>
       <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     <description>Tags</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 27 Jan 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>Tags</title>
@@ -13,25 +13,9 @@
     </image>
     
     <item>
-      <title>AMBF</title>
-      <link>/tags/ambf/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/tags/ambf/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Autonomous Navigation</title>
-      <link>/tags/autonomous-navigation/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/tags/autonomous-navigation/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Gazebo</title>
       <link>/tags/gazebo/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 27 Jan 2020 00:00:00 +0000</pubDate>
       <guid>/tags/gazebo/</guid>
       <description></description>
     </item>
@@ -39,8 +23,64 @@
     <item>
       <title>Navigation</title>
       <link>/tags/navigation/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 27 Jan 2020 00:00:00 +0000</pubDate>
       <guid>/tags/navigation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ROS</title>
+      <link>/tags/ros/</link>
+      <pubDate>Mon, 27 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/ros/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>OpenAI Gym</title>
+      <link>/tags/openai-gym/</link>
+      <pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate>
+      <guid>/tags/openai-gym/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Pytorch</title>
+      <link>/tags/pytorch/</link>
+      <pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate>
+      <guid>/tags/pytorch/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Reinforcement Learning</title>
+      <link>/tags/reinforcement-learning/</link>
+      <pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate>
+      <guid>/tags/reinforcement-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Autonomous Navigation</title>
+      <link>/tags/autonomous-navigation/</link>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
+      <guid>/tags/autonomous-navigation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SLAM</title>
+      <link>/tags/slam/</link>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
+      <guid>/tags/slam/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>AMBF</title>
+      <link>/tags/ambf/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/tags/ambf/</guid>
       <description></description>
     </item>
     
@@ -53,14 +93,6 @@
     </item>
     
     <item>
-      <title>OpenAI Gym</title>
-      <link>/tags/openai-gym/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/tags/openai-gym/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>OpenCV</title>
       <link>/tags/opencv/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -69,42 +101,10 @@
     </item>
     
     <item>
-      <title>python</title>
+      <title>Python</title>
       <link>/tags/python/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>/tags/python/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Pytorch</title>
-      <link>/tags/pytorch/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/tags/pytorch/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Reinforcement Learning</title>
-      <link>/tags/reinforcement-learning/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/tags/reinforcement-learning/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>ROS</title>
-      <link>/tags/ros/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/tags/ros/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>SLAM</title>
-      <link>/tags/slam/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/tags/slam/</guid>
       <description></description>
     </item>
     
