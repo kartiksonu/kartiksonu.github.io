@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Kartik Patath — Computer Vision & Robotics</title>
     <meta name="description" content="Portfolio of Kartik Patath — Software Engineer focused on Computer Vision, SLAM, and Robotics." />
-    <link rel="canonical" href="https://kartiksonu.github.io/" />
+  <link rel="canonical" href="https://kartiksonu.github.io/" />
 
     <link rel="icon" href="/media/icon_hu2e9c6cf66d3af87fdee2833acc3b1756_12919_32x32_fill_lanczos_center_3.png" sizes="32x32" />
     <link rel="apple-touch-icon" href="/media/icon_hu2e9c6cf66d3af87fdee2833acc3b1756_12919_180x180_fill_lanczos_center_3.png" />
@@ -13,50 +13,67 @@
     <style>
       :root {
         --bg: #0b0c10;
+        --bg-grad-a: #0b0c10;
+        --bg-grad-b: #0f1b2e;
         --card: #121318;
-        --text: #e6e6e6;
-        --muted: #b6b7bb;
-        --accent: #1565c0;
+        --glass: rgba(18,19,24,0.6);
+        --text: #eaeaf0;
+        --muted: #a9adbd;
+        --accent: #4f8cff;
         --accent-2: #64b5f6;
-        --border: #20222b;
+        --border: #1f2230;
+        --ring: rgba(79,140,255,0.35);
         --maxw: 1080px;
+        --shadow: 0 10px 30px rgba(0,0,0,0.35);
+        --shadow-soft: 0 6px 20px rgba(0,0,0,0.25);
       }
       * { box-sizing: border-box; }
       html, body { height: 100%; }
       body {
         margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-        background: var(--bg);
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, "Segoe UI", Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+        background: radial-gradient(1200px 600px at 70% -10%, var(--bg-grad-b), transparent),
+                    radial-gradient(900px 500px at -10% 10%, #11203b, transparent),
+                    var(--bg);
         color: var(--text);
-        line-height: 1.6;
+        line-height: 1.65;
       }
       a { color: var(--accent-2); text-decoration: none; }
       a:hover { text-decoration: underline; }
       .container { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 20px; }
-      header { position: sticky; top: 0; background: rgba(11,12,16,0.9); backdrop-filter: blur(6px); border-bottom: 1px solid var(--border); z-index: 10; }
-      .nav { display: flex; align-items: center; justify-content: space-between; height: 60px; }
-      .brand { font-weight: 700; letter-spacing: 0.2px; }
-      .links { display: flex; gap: 18px; }
-      .links a { color: var(--muted); font-weight: 600; }
+      header { position: sticky; top: 0; background: rgba(10,12,18,0.7); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); z-index: 20; box-shadow: 0 1px 0 rgba(255,255,255,0.03); }
+      .nav { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+      .brand { font-weight: 800; letter-spacing: 0.2px; font-size: 16px; }
+      .brand .gradient { background: linear-gradient(90deg, #7dd3fc, #60a5fa, #c084fc); -webkit-background-clip: text; background-clip: text; color: transparent; }
+      .links { display: flex; gap: 20px; align-items: center; }
+      .links a { color: var(--muted); font-weight: 600; font-size: 14px; }
       .links a:hover { color: var(--text); }
+      .menu-btn { display: none; width: 36px; height: 36px; border-radius: 9px; border: 1px solid var(--border); background: var(--glass); color: var(--text); align-items: center; justify-content: center; }
 
-      .hero { padding: 56px 0 32px; border-bottom: 1px solid var(--border); }
-      .hero-wrap { display: grid; grid-template-columns: 160px 1fr; gap: 24px; align-items: center; }
-      .avatar { width: 160px; height: 160px; border-radius: 100%; object-fit: cover; border: 2px solid var(--border); background: #0f1015; }
-      h1 { margin: 0 0 8px; font-size: 28px; }
-      .subtitle { margin: 0 0 8px; color: var(--muted); font-weight: 600; }
-      .social { display: flex; gap: 12px; margin-top: 8px; }
-      .btn { display: inline-block; padding: 8px 12px; border-radius: 9px; background: var(--accent); color: white; font-weight: 600; }
-      .btn.secondary { background: #1f2532; color: var(--text); border: 1px solid var(--border); }
+      .hero { padding: 72px 0 32px; border-bottom: 1px solid var(--border); }
+      .hero-wrap { display: grid; grid-template-columns: 180px 1fr; gap: 28px; align-items: center; }
+      .avatar { width: 180px; height: 180px; border-radius: 26px; object-fit: cover; border: 1px solid var(--border); background: #0f1015; box-shadow: var(--shadow-soft); }
+      .name { margin: 0 0 6px; font-size: 34px; letter-spacing: 0.2px; }
+      .role { margin: 0 0 12px; color: var(--muted); font-weight: 600; }
+      .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 6px; }
+      .chip { padding: 5px 10px; border-radius: 999px; background: rgba(100,181,246,0.12); color: #dbeafe; border: 1px solid rgba(100,181,246,0.3); font-size: 12px; }
+      .social { display: flex; gap: 12px; margin-top: 10px; }
+      .btn { display: inline-block; padding: 10px 14px; border-radius: 12px; background: linear-gradient(135deg, #3b82f6, #6366f1); color: white; font-weight: 700; box-shadow: var(--shadow-soft); border: 1px solid rgba(99,102,241,0.35); }
+      .btn.secondary { background: linear-gradient(135deg, #0b1220, #111827); color: var(--text); border: 1px solid var(--border); }
       .btn:hover { filter: brightness(1.05); text-decoration: none; }
 
-      section { padding: 36px 0; }
-      .section-title { font-size: 22px; margin: 0 0 16px; }
+      section { padding: 44px 0; }
+      .section-title { font-size: 22px; margin: 0 0 16px; font-weight: 800; letter-spacing: 0.2px; }
       .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
       ul { margin: 0; padding-left: 18px; }
-      .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; }
-      .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-      .proj img { width: 100%; height: 160px; object-fit: cover; border-radius: 10px; border: 1px solid var(--border); }
+      .card { background: linear-gradient(180deg, rgba(17,19,26,0.7), rgba(17,19,26,0.5)); border: 1px solid var(--border); border-radius: 16px; padding: 20px; box-shadow: var(--shadow-soft); }
+      .card:hover { box-shadow: var(--shadow); border-color: var(--ring); }
+      .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+      .proj .thumb { position: relative; border-radius: 14px; overflow: hidden; border: 1px solid var(--border); box-shadow: var(--shadow-soft); }
+      .proj img { width: 100%; height: 180px; object-fit: cover; display: block; transition: transform .35s ease; }
+      .proj .thumb::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.45), rgba(0,0,0,0)); opacity: 0.7; transition: opacity .35s ease; }
+      .proj:hover img { transform: scale(1.04); }
+      .proj:hover .thumb::after { opacity: 0.55; }
       .proj h3 { margin: 10px 0 4px; font-size: 16px; }
       .muted { color: var(--muted); font-size: 14px; }
       footer { padding: 28px 0 56px; color: var(--muted); border-top: 1px solid var(--border); margin-top: 24px; }
@@ -64,19 +81,27 @@
       @media (max-width: 900px) {
         .grid { grid-template-columns: repeat(2, 1fr); }
         .hero-wrap { grid-template-columns: 120px 1fr; }
-        .avatar { width: 120px; height: 120px; }
+        .avatar { width: 120px; height: 120px; border-radius: 18px; }
+        .menu-btn { display: inline-flex; }
+        .links { position: fixed; inset: 60px 12px auto 12px; background: rgba(10,12,18,0.95); border: 1px solid var(--border); border-radius: 12px; padding: 12px; gap: 12px; display: none; flex-direction: column; box-shadow: var(--shadow-soft); }
+        .links.show { display: flex; }
       }
       @media (max-width: 640px) {
         .grid { grid-template-columns: 1fr; }
         .two-col { grid-template-columns: 1fr; }
       }
+      @media (prefers-color-scheme: light) {
+        :root { --bg: #fbfdff; --bg-grad-a: #fbfdff; --bg-grad-b: #eef2ff; --card: #ffffff; --glass: rgba(255,255,255,0.6); --text: #0f172a; --muted: #475569; --border: #e5e7eb; --ring: rgba(79,140,255,0.25); }
+        header { background: rgba(255,255,255,0.7); }
+      }
     </style>
-  </head>
+</head>
   <body>
     <header>
       <div class="container nav">
-        <div class="brand">Kartik Patath</div>
-        <nav class="links">
+        <div class="brand">Kartik <span class="gradient">Patath</span></div>
+        <button class="menu-btn" aria-label="Menu" onclick="document.querySelector('.links').classList.toggle('show')">☰</button>
+        <nav class="links" onclick="this.classList.remove('show')">
           <a href="#about">About</a>
           <a href="#publications">Publications</a>
           <a href="#projects">Projects</a>
@@ -90,26 +115,33 @@
         <div class="container hero-wrap">
           <img class="avatar" src="/authors/admin/avatar.jpg" alt="Portrait of Kartik Patath" />
           <div>
-            <h1>Software Engineer — Computer Vision & Robotics</h1>
-            <p class="subtitle">Interests: Computer Vision, SLAM, Sensor Fusion, State Estimation, Deep Learning</p>
+            <h1 class="name">Software Engineer — Computer Vision & Robotics</h1>
+            <p class="role">Building perception and autonomy systems.</p>
+            <div class="chips">
+              <span class="chip">Computer Vision</span>
+              <span class="chip">SLAM</span>
+              <span class="chip">Sensor Fusion</span>
+              <span class="chip">State Estimation</span>
+              <span class="chip">Deep Learning</span>
+        </div>
             <div class="social">
               <a class="btn" href="mailto:kpatath@wpi.edu">Email</a>
               <a class="btn secondary" href="https://github.com/kartiksonu" target="_blank" rel="noopener">GitHub</a>
               <a class="btn secondary" href="https://www.linkedin.com/in/kartiksonu" target="_blank" rel="noopener">LinkedIn</a>
               <a class="btn" href="/uploads/resume.pdf" target="_blank" rel="noopener">Resume</a>
-            </div>
-          </div>
         </div>
-      </section>
+      </div>
+      </div>
+    </section>
 
       <section>
         <div class="container two-col">
           <div class="card">
             <div class="section-title">About</div>
             <p>
-              I build robust perception and autonomy systems, with a focus on visual perception,
-              tightly-coupled state estimation, and semantic mapping. I enjoy shipping practical,
-              well-engineered solutions and publishing when there’s a good story to tell.
+              I design and ship reliable perception & autonomy systems — from camera‑first sensing and
+              multi‑sensor fusion to tightly‑coupled visual‑inertial state estimation and semantic mapping.
+              I care about clarity, reproducibility, and measurable impact in real applications.
             </p>
           </div>
           <div class="card">
@@ -117,106 +149,124 @@
             <ul>
               <li><strong>MS, Robotics Engineering</strong>, Worcester Polytechnic Institute, 2021</li>
               <li><strong>B.Tech, Electronics & Communication</strong>, VNIT Nagpur, 2018</li>
-            </ul>
+        </ul>
+      </div>
           </div>
-        </div>
       </section>
 
       <section id="publications">
-        <div class="container">
+    <div class="container">
           <div class="section-title">Publications</div>
           <div class="card">
             <ul>
               <li>
                 <a href="/pdf/A_Real-time_Augmented_Reality_Surgical_System_for_.pdf" target="_blank" rel="noopener">A Real-time Augmented Reality Surgical System for Overlaying Stiffness Information</a>
-              </li>
+        </li>
               <li>
                 <a href="/pdf/Dynamic_Texture_Mapping_of_3D_models_for_Stiffness.pdf" target="_blank" rel="noopener">Dynamic Texture Mapping of 3D models for Stiffness Map Visualization</a>
-              </li>
+        </li>
               <li>
                 <a href="/pdf/Semantic_SLAM.pdf" target="_blank" rel="noopener">Semantic SLAM with Autonomous Object-Level Data Association</a>
-              </li>
+        </li>
               <li>
                 <a href="/pdf/A_surgical_system_for_automatic_registration_stiff.pdf" target="_blank" rel="noopener">Surgical system for automatic registration, stiffness mapping and dynamic image overlay</a>
-              </li>
+        </li>
               <li>
                 <a href="/pdf/Vision_system_for_a_6LeggedRobot.pdf" target="_blank" rel="noopener">Visual system for a Modular 6‑Legged robot</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
       <section id="projects">
-        <div class="container">
+    <div class="container">
           <div class="section-title">Projects</div>
           <div class="grid">
             <div class="card proj">
-              <a href="/pdf/Semantic_SLAM.pdf" target="_blank" rel="noopener">
-                <img src="/project/semantic-slam/featured.png" alt="Semantic SLAM" />
-              </a>
+              <div class="thumb">
+                <a href="/pdf/Semantic_SLAM.pdf" target="_blank" rel="noopener">
+                  <img src="/project/semantic-slam/featured.png" alt="Semantic SLAM" />
+                </a>
+              </div>
               <h3>Semantic SLAM</h3>
               <div class="muted">Object‑level data association and real‑time semantic mapping.</div>
-            </div>
+    </div>
             <div class="card proj">
-              <a href="/project/motion-forcasting/Motion-Forecasting.pdf" target="_blank" rel="noopener">
-                <img src="/project/motion-forcasting/featured.png" alt="Motion forecasting" />
-              </a>
+              <div class="thumb">
+                <a href="/project/motion-forcasting/Motion-Forecasting.pdf" target="_blank" rel="noopener">
+                  <img src="/project/motion-forcasting/featured.png" alt="Motion forecasting" />
+                </a>
+              </div>
               <h3>Motion forecasting</h3>
               <div class="muted">Forecasting trajectories with social context on Argoverse.</div>
-            </div>
+    </div>
             <div class="card proj">
-              <a href="/project/curiosity-based-learning/report.pdf" target="_blank" rel="noopener">
-                <img src="/project/curiosity-based-learning/featured.png" alt="Curiosity-Driven Exploration" />
-              </a>
+              <div class="thumb">
+                <a href="/project/curiosity-based-learning/report.pdf" target="_blank" rel="noopener">
+                  <img src="/project/curiosity-based-learning/featured.png" alt="Curiosity-Driven Exploration" />
+                </a>
+              </div>
               <h3>Curiosity‑Driven Exploration</h3>
               <div class="muted">ICM & RND for intrinsic motivation and exploration.</div>
-            </div>
+    </div>
             <div class="card proj">
-              <a href="/project/butler/featured.jpg" target="_blank" rel="noopener">
-                <img src="/project/butler/featured.jpg" alt="Butler Robot" />
-              </a>
+              <div class="thumb">
+                <a href="/project/butler/featured.jpg" target="_blank" rel="noopener">
+                  <img src="/project/butler/featured.jpg" alt="Butler Robot" />
+                </a>
+              </div>
               <h3>Butler Robot</h3>
               <div class="muted">Indoor autonomous navigation on a custom UGV.</div>
-            </div>
+    </div>
             <div class="card proj">
-              <a href="https://github.com/kartiksonu/Reinforcement-Learning-CS525" target="_blank" rel="noopener">
-                <img src="/project/dqn/featured.gif" alt="DQN Breakout" />
-              </a>
+              <div class="thumb">
+                <a href="https://github.com/kartiksonu/Reinforcement-Learning-CS525" target="_blank" rel="noopener">
+                  <img src="/project/dqn/featured.gif" alt="DQN Breakout" />
+                </a>
+              </div>
               <h3>DQN — Breakout</h3>
               <div class="muted">Dueling DQN trained to play Atari Breakout.</div>
-            </div>
+    </div>
             <div class="card proj">
-              <a href="/project/icp/slides.pdf" target="_blank" rel="noopener">
-                <img src="/project/icp/featured.gif" alt="ICP" />
-              </a>
+              <div class="thumb">
+                <a href="/project/icp/slides.pdf" target="_blank" rel="noopener">
+                  <img src="/project/icp/featured.gif" alt="ICP" />
+                </a>
+              </div>
               <h3>ICP</h3>
               <div class="muted">Geometry processing and registration demo.</div>
-            </div>
+    </div>
             <div class="card proj">
-              <a href="https://github.com/kartiksonu/Obstacle_avoidance_randomwalk" target="_blank" rel="noopener">
-                <img src="/project/obstacle-avoidance/featured.gif" alt="Obstacle avoidance" />
-              </a>
+              <div class="thumb">
+                <a href="https://github.com/kartiksonu/Obstacle_avoidance_randomwalk" target="_blank" rel="noopener">
+                  <img src="/project/obstacle-avoidance/featured.gif" alt="Obstacle avoidance" />
+                </a>
+              </div>
               <h3>Obstacle avoidance</h3>
               <div class="muted">Random walk and obstacle avoidance in simulation.</div>
-            </div>
+    </div>
             <div class="card proj">
-              <a href="/project/impedance-control/report.pdf" target="_blank" rel="noopener">
-                <img src="/project/impedance-control/featured.gif" alt="Impedance Control" />
-              </a>
+              <div class="thumb">
+                <a href="/project/impedance-control/report.pdf" target="_blank" rel="noopener">
+                  <img src="/project/impedance-control/featured.gif" alt="Impedance Control" />
+                </a>
+              </div>
               <h3>Impedance Control</h3>
               <div class="muted">Control on KUKA LWR and dVRK MTM.</div>
-            </div>
+    </div>
             <div class="card proj">
-              <a href="https://github.com/kartiksonu/SARA" target="_blank" rel="noopener">
-                <img src="/project/sara/featured.png" alt="SARA" />
-              </a>
+              <div class="thumb">
+                <a href="https://github.com/kartiksonu/SARA" target="_blank" rel="noopener">
+                  <img src="/project/sara/featured.png" alt="SARA" />
+                </a>
+              </div>
               <h3>SARA</h3>
               <div class="muted">Semi‑Autonomous Robot Assistant.</div>
-            </div>
-          </div>
-        </div>
-      </section>
+    </div>
+  </div>
+    </div>
+  </section>
 
       <section id="contact">
         <div class="container card">
@@ -225,18 +275,18 @@
           <p><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/kartiksonu" target="_blank" rel="noopener">linkedin.com/in/kartiksonu</a></p>
           <p><strong>GitHub</strong>: <a href="https://github.com/kartiksonu" target="_blank" rel="noopener">github.com/kartiksonu</a></p>
           <p><a class="btn" href="/uploads/resume.pdf" target="_blank" rel="noopener">Download Resume</a></p>
-        </div>
-      </section>
+    </div>
+  </section>
     </main>
 
     <footer>
-      <div class="container">
+    <div class="container">
         © <span id="year"></span> Kartik Patath
-      </div>
-    </footer>
+          </div>
+</footer>
 
     <script>
       document.getElementById('year').textContent = new Date().getFullYear();
-    </script>
-  </body>
-  </html>
+      </script>
+</body>
+</html>
