@@ -101,6 +101,7 @@
         z-index: 100;
         text-align: center;
         pointer-events: none;
+        will-change: transform, color, text-shadow;
       }
 
       .hero-text h1 {
@@ -128,8 +129,8 @@
         top: 50%;
         right: -450px;
         transform: translateY(-50%);
-        width: 350px;
-        height: 450px;
+        width: 380px;
+        height: 500px;
         border-radius: 20px;
         overflow: hidden;
         z-index: 50;
@@ -771,7 +772,7 @@
         const scrolled = window.pageYOffset;
                 const windowHeight = window.innerHeight;
         const heroHeight = windowHeight * 1.5; // 150vh
-        
+
         // Calculate scroll progress (0 to 1)
         const progress = Math.min(scrolled / (heroHeight * 0.8), 1);
 
@@ -779,14 +780,16 @@
         const overlay = document.getElementById('transitionOverlay');
         overlay.style.width = `${progress * 100}%`;
 
-        // Change text color when overlay covers it
+        // Change text color when overlay covers it and shift text slightly like the reference
         const heroText = document.getElementById('heroText');
         if (progress > 0.4) {
           heroText.style.color = '#fff';
           heroText.style.textShadow = '2px 2px 4px rgba(0,0,0,0.5)';
+          heroText.style.transform = 'translate(-55%, -50%) scale(0.95)';
         } else {
           heroText.style.color = '#333';
           heroText.style.textShadow = '2px 2px 4px rgba(0,0,0,0.1)';
+          heroText.style.transform = 'translate(-50%, -50%) scale(1)';
         }
 
         // Show elements at different scroll points
