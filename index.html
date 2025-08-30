@@ -27,13 +27,6 @@
         overflow-x: hidden;
         background: #f5f5f5;
         color: #000;
-        transition: all 0.3s ease;
-      }
-
-      /* Dynamic background that changes with scroll */
-      body.dark-mode {
-        background: #000;
-        color: #fff;
       }
 
       /* Header Navigation */
@@ -44,7 +37,6 @@
         right: 0;
         z-index: 1000;
         padding: 30px 40px;
-        mix-blend-mode: difference;
       }
 
       .nav {
@@ -81,22 +73,22 @@
         transition: color 0.3s ease;
       }
 
-      /* Hero Section with Split Effect */
+      /* Hero Section */
       .hero {
         height: 300vh;
         position: relative;
         overflow: hidden;
       }
 
-      /* Background transition overlay */
-      .bg-transition {
+      /* Transition overlay that sweeps from right to left */
+      .transition-overlay {
         position: fixed;
         top: 0;
         right: 0;
         width: 0%;
         height: 100vh;
         background: #000;
-        z-index: 1;
+        z-index: 10;
         transition: width 0.1s ease-out;
       }
 
@@ -109,18 +101,21 @@
         z-index: 100;
         text-align: center;
         pointer-events: none;
-        mix-blend-mode: difference;
       }
 
-
-
       .hero-text h1 {
-        font-size: clamp(8rem, 20vw, 16rem);
+        font-size: clamp(6rem, 15vw, 12rem);
         font-weight: 300;
         line-height: 0.8;
-        color: #000;
+        color: #333;
         letter-spacing: -0.05em;
-        text-shadow: 0 0 1px rgba(0,0,0,0.1);
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        transition: color 0.5s ease;
+      }
+
+      .hero-text.inverted h1 {
+        color: #fff;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
       }
 
       .hero-text .name {
@@ -131,33 +126,33 @@
       .hero-photo {
         position: fixed;
         top: 50%;
-        right: -500px;
+        right: -450px;
         transform: translateY(-50%);
-        width: 400px;
-        height: 500px;
+        width: 350px;
+        height: 450px;
         border-radius: 20px;
         overflow: hidden;
         z-index: 50;
         transition: right 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
       }
 
       .hero-photo img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        filter: brightness(0.8) contrast(1.2) saturate(0.9);
+        filter: brightness(0.85) contrast(1.15) saturate(0.95);
       }
 
       .hero-photo.visible {
-        right: 8%;
+        right: 6%;
       }
 
       /* Subtitle that fades in */
       .hero-subtitle {
         position: fixed;
         bottom: 25%;
-        left: 10%;
+        left: 8%;
         max-width: 400px;
         font-size: 1.2rem;
         color: #fff;
@@ -176,8 +171,8 @@
       /* Links that slide up */
       .hero-links {
         position: fixed;
-        bottom: 10%;
-        right: 10%;
+        bottom: 8%;
+        right: 6%;
         display: flex;
         flex-direction: column;
         gap: 15px;
@@ -426,8 +421,8 @@
         }
 
         .hero-photo {
-          width: 200px;
-          height: 300px;
+          width: 250px;
+          height: 350px;
           right: 5%;
         }
 
@@ -475,11 +470,11 @@
 
     <!-- Hero Section with Transition -->
     <section class="hero">
-      <!-- Background transition overlay -->
-      <div class="bg-transition" id="bgTransition"></div>
+      <!-- Transition overlay that sweeps from right to left -->
+      <div class="transition-overlay" id="transitionOverlay"></div>
 
       <!-- Large Typography -->
-      <div class="hero-text">
+      <div class="hero-text" id="heroText">
         <h1>
           Hi<br>
           I'm<br>
@@ -514,14 +509,14 @@
         <h2 class="section-title">About me</h2>
         <div style="max-width: 800px; margin: 0 auto; font-size: 1.2rem; color: #a0a0a0; line-height: 1.6;">
           <p style="margin-bottom: 2rem;">
-            I'm a Computer Vision & Robotics Engineer passionate about creating intelligent systems
-            that understand and interact with the world. With experience spanning from NASA JPL's
-            DARPA SubT competition to Toyota's autonomous vehicle fleet, I specialize in bridging
+            I'm a Computer Vision & Robotics Engineer passionate about creating intelligent systems 
+            that understand and interact with the world. With experience spanning from NASA JPL's 
+            DARPA SubT competition to Toyota's autonomous vehicle fleet, I specialize in bridging 
             the gap between cutting-edge research and production-ready systems.
           </p>
           <p>
-            My expertise lies in perception systems, SLAM, sensor fusion, and deep learning.
-            I believe in building technology that's not just innovative, but reliable, scalable,
+            My expertise lies in perception systems, SLAM, sensor fusion, and deep learning. 
+            I believe in building technology that's not just innovative, but reliable, scalable, 
             and impactful in real-world applications.
           </p>
         </div>
@@ -609,7 +604,7 @@
             <img src="/project/semantic-slam/featured.png" alt="Semantic SLAM" class="project-image" />
             <h3>Semantic SLAM</h3>
             <div class="project-description">
-              Object-level data association and real-time semantic mapping system that integrates
+              Object-level data association and real-time semantic mapping system that integrates 
               deep learning with traditional SLAM techniques for robust autonomous navigation.
             </div>
             <a href="/pdf/Semantic_SLAM.pdf" target="_blank" class="project-link">View Paper</a>
@@ -619,7 +614,7 @@
             <img src="/project/motion-forcasting/featured.png" alt="Motion Forecasting" class="project-image" />
             <h3>Motion Forecasting</h3>
             <div class="project-description">
-              Trajectory prediction system using social context on the Argoverse dataset.
+              Trajectory prediction system using social context on the Argoverse dataset. 
               Implemented GANs and Social LSTM for autonomous vehicle path planning.
             </div>
             <a href="/project/motion-forcasting/Motion-Forecasting.pdf" target="_blank" class="project-link">View Report</a>
@@ -638,7 +633,7 @@
             <img src="/project/butler/featured.jpg" alt="Butler Robot" class="project-image" />
             <h3>Butler Robot</h3>
             <div class="project-description">
-              Custom autonomous ground vehicle designed for indoor navigation. Features advanced
+              Custom autonomous ground vehicle designed for indoor navigation. Features advanced 
               perception capabilities and real-time path planning in dynamic environments.
             </div>
             <a href="/project/butler/featured.jpg" target="_blank" class="project-link">View Project</a>
@@ -648,7 +643,7 @@
             <img src="/project/dqn/featured.gif" alt="DQN Breakout" class="project-image" />
             <h3>DQN — Breakout</h3>
             <div class="project-description">
-              Dueling Deep Q-Network trained to play Atari Breakout game. Demonstrates advanced
+              Dueling Deep Q-Network trained to play Atari Breakout game. Demonstrates advanced 
               reinforcement learning techniques and neural network optimization.
             </div>
             <a href="https://github.com/kartiksonu/Reinforcement-Learning-CS525" target="_blank" class="project-link">View Code</a>
@@ -658,7 +653,7 @@
             <img src="/project/icp/featured.gif" alt="ICP" class="project-image" />
             <h3>ICP</h3>
             <div class="project-description">
-              Iterative Closest Point algorithm implementation for geometry processing and
+              Iterative Closest Point algorithm implementation for geometry processing and 
               point cloud registration with real-time visualization.
             </div>
             <a href="/project/icp/slides.pdf" target="_blank" class="project-link">View Slides</a>
@@ -668,7 +663,7 @@
             <img src="/project/obstacle-avoidance/featured.gif" alt="Obstacle Avoidance" class="project-image" />
             <h3>Obstacle Avoidance</h3>
             <div class="project-description">
-              Random walk and obstacle avoidance simulation in confined environments.
+              Random walk and obstacle avoidance simulation in confined environments. 
               Demonstrates path planning and collision detection algorithms.
             </div>
             <a href="https://github.com/kartiksonu/Obstacle_avoidance_randomwalk" target="_blank" class="project-link">View Code</a>
@@ -678,7 +673,7 @@
             <img src="/project/impedance-control/featured.gif" alt="Impedance Control" class="project-image" />
             <h3>Impedance Control</h3>
             <div class="project-description">
-              Implementing impedance control on KUKA LWR and dVRK Master Tool Manipulator (MTM)
+              Implementing impedance control on KUKA LWR and dVRK Master Tool Manipulator (MTM) 
               for precise robotic manipulation and force feedback.
             </div>
             <a href="/project/impedance-control/report.pdf" target="_blank" class="project-link">View Report</a>
@@ -688,7 +683,7 @@
             <img src="/project/sara/featured.png" alt="SARA" class="project-image" />
             <h3>SARA</h3>
             <div class="project-description">
-              Semi-Autonomous Robot Assistant - a mobile wheelchair equipped with navigation
+              Semi-Autonomous Robot Assistant - a mobile wheelchair equipped with navigation 
               and vision modules for assisted mobility and autonomous operation.
             </div>
             <a href="https://github.com/kartiksonu/SARA" target="_blank" class="project-link">View Code</a>
@@ -751,7 +746,7 @@
       <section class="contact" id="contact">
         <h2>Let's connect</h2>
         <p class="contact-text">
-          Interested in collaborating on computer vision, robotics, or autonomous systems projects?
+          Interested in collaborating on computer vision, robotics, or autonomous systems projects? 
           Let's discuss how we can build the future together.
         </p>
         <div class="contact-links">
@@ -776,40 +771,42 @@
         const scrolled = window.pageYOffset;
         const windowHeight = window.innerHeight;
         const heroHeight = windowHeight * 3; // 300vh
-
+        
         // Calculate scroll progress (0 to 1)
-        const progress = Math.min(scrolled / (heroHeight * 0.8), 1);
-
-        // Transition background from white to black
-        const bgTransition = document.getElementById('bgTransition');
-        const transitionWidth = progress * 100;
-        bgTransition.style.width = `${transitionWidth}%`;
-
-        // Change body background when transition is complete
-        if (progress > 0.8) {
-          document.body.classList.add('dark-mode');
+        const progress = Math.min(scrolled / (heroHeight * 0.6), 1);
+        
+        // Transition overlay sweeps from right to left
+        const overlay = document.getElementById('transitionOverlay');
+        overlay.style.width = `${progress * 100}%`;
+        
+        // Change text color when overlay covers it
+        const heroText = document.getElementById('heroText');
+        if (progress > 0.4) {
+          heroText.style.color = '#fff';
+          heroText.style.textShadow = '2px 2px 4px rgba(0,0,0,0.5)';
         } else {
-          document.body.classList.remove('dark-mode');
+          heroText.style.color = '#333';
+          heroText.style.textShadow = '2px 2px 4px rgba(0,0,0,0.1)';
         }
-
+        
         // Show elements at different scroll points
         const photo = document.getElementById('heroPhoto');
         const subtitle = document.getElementById('heroSubtitle');
         const links = document.getElementById('heroLinks');
-
-        if (progress > 0.2) {
+        
+        if (progress > 0.3) {
           photo.classList.add('visible');
         } else {
           photo.classList.remove('visible');
         }
-
-        if (progress > 0.4) {
+        
+        if (progress > 0.5) {
           subtitle.classList.add('visible');
         } else {
           subtitle.classList.remove('visible');
         }
-
-        if (progress > 0.6) {
+        
+        if (progress > 0.7) {
           links.classList.add('visible');
         } else {
           links.classList.remove('visible');
