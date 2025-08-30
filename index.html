@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Kartik Patath — Computer Vision & Robotics</title>
+    <title>Kartik Patath — Computer Vision & Robotics Engineer</title>
     <meta name="description" content="Portfolio of Kartik Patath — Software Engineer focused on Computer Vision, SLAM, and Robotics." />
     <link rel="canonical" href="https://kartiksonu.github.io/" />
 
@@ -470,14 +470,14 @@
             <h2>About me</h2>
             <div class="about-text">
               <p>
-                I'm a Computer Vision & Robotics Engineer passionate about creating intelligent systems
-                that understand and interact with the world. With experience spanning from NASA JPL's
-                DARPA SubT competition to Toyota's autonomous vehicle fleet, I specialize in bridging
+                I'm a Computer Vision & Robotics Engineer passionate about creating intelligent systems 
+                that understand and interact with the world. With experience spanning from NASA JPL's 
+                DARPA SubT competition to Toyota's autonomous vehicle fleet, I specialize in bridging 
                 the gap between cutting-edge research and production-ready systems.
               </p>
               <p>
-                My expertise lies in perception systems, SLAM, sensor fusion, and deep learning.
-                I believe in building technology that's not just innovative, but reliable, scalable,
+                My expertise lies in perception systems, SLAM, sensor fusion, and deep learning. 
+                I believe in building technology that's not just innovative, but reliable, scalable, 
                 and impactful in real-world applications.
               </p>
             </div>
@@ -498,11 +498,10 @@
             <div class="experience-date">Jun 2022 – Present</div>
             <div class="experience-content">
               <h3>Localization & Mapping Engineer</h3>
-              <div class="experience-company">Woven by Toyota, Palo Alto</div>
+              <div class="experience-company">Woven by Toyota, Palo Alto, CA</div>
               <div class="experience-description">
-                Leading cross-functional integration across perception, mapping, and ML teams.
-                Translating research concepts from proof-of-concepts into production-ready systems
-                deployed on vehicle fleets. Owning perception-to-map interfaces and on-vehicle validation.
+                <strong>Change Detection:</strong> Designed a localization framework for change detection, which identifies changes in road signs and features. This framework uses GTSAM for factorgraph optimization with GPS and SFM-based odometry.<br><br>
+                <strong>TSS Ingest Component:</strong> Designed and deployed a data ingestion module to process thousands of data files in parallel. This module generates Medium Definition Maps (MD Maps) for autonomous driving applications.
               </div>
             </div>
           </div>
@@ -511,11 +510,20 @@
             <div class="experience-date">Aug 2021 – Mar 2022</div>
             <div class="experience-content">
               <h3>Computer Vision Engineer</h3>
-              <div class="experience-company">Honda Research Institute USA, San Jose</div>
+              <div class="experience-company">Velodyne Lidar, San Jose, CA</div>
               <div class="experience-description">
-                Shipped computer vision modules from research to prototype stage.
-                Contributed to perception stack performance and reliability improvements
-                for autonomous vehicle applications.
+                <strong>3D Lidar Perception:</strong> Developed a 3D-object tracking and prediction module with occupancy estimation for the Vella Development Kit (VDK), which is used in ADAS and autonomous driving applications.
+              </div>
+            </div>
+          </div>
+
+          <div class="experience-item">
+            <div class="experience-date">Feb 2021 – May 2021</div>
+            <div class="experience-content">
+              <h3>Robotics Research Intern</h3>
+              <div class="experience-company">Honda Research Institute USA, San Jose, CA</div>
+              <div class="experience-description">
+                <strong>Curiosity Based SLAM:</strong> Worked on curiosity based mapping and navigation in unknown environment, targeting indoor spaces. Benchmarked on custom developed A-star variant.
               </div>
             </div>
           </div>
@@ -524,11 +532,9 @@
             <div class="experience-date">Aug 2020 – Jan 2021</div>
             <div class="experience-content">
               <h3>JVSRP Research Intern</h3>
-              <div class="experience-company">NASA JPL, Team CoSTAR, Pasadena</div>
+              <div class="experience-company">NASA JPL, Team CoSTAR, Pasadena, CA</div>
               <div class="experience-description">
-                Contributed to artifact detection and semantic mapping components used in the
-                final stage of DARPA SubT competition (2021). Developed robust perception
-                algorithms for underground exploration robots.
+                <strong>Perception of Sub-Terranean Robots:</strong> Developed an artifact localization method using camera and lidar fusion to accurately report artifact locations. This was used in the final stage of the DARPA SubT competition in 2021.
               </div>
             </div>
           </div>
@@ -537,11 +543,21 @@
             <div class="experience-date">Sep 2019 – Aug 2020</div>
             <div class="experience-content">
               <h3>Research Assistant</h3>
-              <div class="experience-company">Worcester Polytechnic Institute</div>
+              <div class="experience-company">Worcester Polytechnic Institute, Worcester, MA</div>
               <div class="experience-description">
-                Developed end-to-end semantic SLAM systems integrating deep learning-based
-                object detection with traditional loop closure techniques. Published research
-                on autonomous object-level data association.
+                <strong>Semantic SLAM:</strong> Integrated a system for semantic-level SLAM, which includes semantic object detection, data association, and loop detection based on semantic objects.
+              </div>
+            </div>
+          </div>
+
+          <div class="experience-item">
+            <div class="experience-date">May 2017 – Aug 2017</div>
+            <div class="experience-content">
+              <h3>Summer Research Intern</h3>
+              <div class="experience-company">Carnegie Mellon University, Pittsburgh, PA</div>
+              <div class="experience-description">
+                <strong>Dynamic Texture Mapping for Stiffness Visualization:</strong> Developed an Rviz plugin for dynamic texturing. This plugin augments textures to 3D models in real-time and uses texture mapping and projective geometry for the backend.<br><br>
+                <strong>Vision System for Modular 6-Legged Robot:</strong> Developed a vision system with an Intel RealSense and Hokuyo lidar for a 6-legged robot. Implemented RGBD and Monocular SLAM with person tracking and 3D mapping using Large Scale Direct SLAM.
               </div>
             </div>
           </div>
@@ -553,7 +569,7 @@
     <section class="projects">
       <div class="container">
         <h2 class="section-title">Featured Projects</h2>
-                <div class="projects-grid">
+        <div class="projects-grid">
           <div class="project-card">
             <img src="/project/semantic-slam/featured.png" alt="Semantic SLAM" class="project-image" />
             <h3>Semantic SLAM</h3>
@@ -680,6 +696,15 @@
 
           <div class="publication-item">
             <div class="publication-title">
+              <a href="/pdf/A_surgical_system_for_automatic_registration_stiff.pdf" target="_blank">
+                Surgical system for automatic registration, stiffness mapping and dynamic image overlay
+              </a>
+            </div>
+            <div class="publication-meta">Conference Paper • Medical Robotics</div>
+          </div>
+
+          <div class="publication-item">
+            <div class="publication-title">
               <a href="/pdf/Vision_system_for_a_6LeggedRobot.pdf" target="_blank">
                 Visual system for a Modular 6-Legged robot
               </a>
@@ -696,7 +721,7 @@
         <div class="contact-content">
           <h2>Let's connect</h2>
           <p class="contact-text">
-            Interested in collaborating on computer vision, robotics, or autonomous systems projects?
+            Interested in collaborating on computer vision, robotics, or autonomous systems projects? 
             Let's discuss how we can build the future together.
           </p>
           <div class="contact-links">
