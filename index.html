@@ -89,7 +89,7 @@
         height: 100vh;
         background: #000;
         z-index: 10;
-        transition: width 0.1s ease-out;
+        transition: none;
       }
 
       /* Large Typography */
@@ -136,6 +136,15 @@
         z-index: 50;
         transition: right 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+      }
+
+      /* Vignette/edge blend overlay on photo, intensity controlled via --fade */
+      .hero-photo::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: linear-gradient(to left, rgba(0,0,0, var(--fade, 0)) 0%, rgba(0,0,0,0) 45%);
       }
 
       .hero-photo img {
@@ -767,54 +776,69 @@
     <script>
       document.getElementById('year').textContent = new Date().getFullYear();
 
-      // Scroll-triggered transition effect
-      window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-                const windowHeight = window.innerHeight;
-        const heroHeight = windowHeight * 1.5; // 150vh
-
-        // Calculate scroll progress (0 to 1)
-        const progress = Math.min(scrolled / (heroHeight * 0.8), 1);
-
-        // Transition overlay sweeps from right to left
+      // Scroll-triggered transition effect with easing
+      (function() {
         const overlay = document.getElementById('transitionOverlay');
-        overlay.style.width = `${progress * 100}%`;
-
-        // Change text color when overlay covers it and shift text slightly like the reference
         const heroText = document.getElementById('heroText');
-        if (progress > 0.4) {
-          heroText.style.color = '#fff';
-          heroText.style.textShadow = '2px 2px 4px rgba(0,0,0,0.5)';
-          heroText.style.transform = 'translate(-55%, -50%) scale(0.95)';
-        } else {
-          heroText.style.color = '#333';
-          heroText.style.textShadow = '2px 2px 4px rgba(0,0,0,0.1)';
-          heroText.style.transform = 'translate(-50%, -50%) scale(1)';
-        }
-
-        // Show elements at different scroll points
         const photo = document.getElementById('heroPhoto');
         const subtitle = document.getElementById('heroSubtitle');
         const links = document.getElementById('heroLinks');
 
-        if (progress > 0.3) {
-          photo.classList.add('visible');
-        } else {
-          photo.classList.remove('visible');
+        let lastProgress = 0;
+
+        function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+        function lerp(a, b, t) { return a + (b - a) * t; }
+
+        function onScroll() {
+          const scrolled = window.pageYOffset;
+          const windowHeight = window.innerHeight;
+          const heroHeight = windowHeight * 1.5; // 150vh
+          const raw = Math.min(scrolled / (heroHeight * 0.8), 1);
+          const eased = easeOutCubic(raw);
+
+          // Smooth out rapid wheel deltas
+          lastProgress = lerp(lastProgress, eased, 0.25);
+
+          // Overlay width (right -> left sweep)
+          overlay.style.width = `${lastProgress * 100}%`;
+
+          // Text color and motion
+          const translateXPercent = lerp(-50, -60, Math.max(0, (lastProgress - 0.2) / 0.6));
+          const scale = lerp(1, 0.93, Math.max(0, (lastProgress - 0.2) / 0.6));
+          heroText.style.transform = `translate(${translateXPercent}%, -50%) scale(${scale})`;
+          if (lastProgress > 0.4) {
+            heroText.style.color = '#fff';
+            heroText.style.textShadow = '2px 2px 4px rgba(0,0,0,0.5)';
+          } else {
+            heroText.style.color = '#333';
+            heroText.style.textShadow = '2px 2px 4px rgba(0,0,0,0.1)';
+          }
+
+          // Photo reveal and vignette blend
+          if (lastProgress > 0.25) {
+            photo.classList.add('visible');
+          } else {
+            photo.classList.remove('visible');
+          }
+          const fade = Math.min(Math.max((lastProgress - 0.35) / 0.5, 0), 0.85);
+          photo.style.setProperty('--fade', fade.toFixed(3));
+
+          // Subtitle and links
+          if (lastProgress > 0.5) {
+            subtitle.classList.add('visible');
+          } else {
+            subtitle.classList.remove('visible');
+          }
+          if (lastProgress > 0.7) {
+            links.classList.add('visible');
+          } else {
+            links.classList.remove('visible');
+          }
         }
 
-        if (progress > 0.5) {
-          subtitle.classList.add('visible');
-        } else {
-          subtitle.classList.remove('visible');
-        }
-
-        if (progress > 0.7) {
-          links.classList.add('visible');
-        } else {
-          links.classList.remove('visible');
-        }
-      });
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+      })();
 
       // Smooth scrolling for navigation links
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
