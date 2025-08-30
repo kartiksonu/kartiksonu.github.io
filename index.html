@@ -75,7 +75,7 @@
 
       /* Hero Section */
       .hero {
-        height: 300vh;
+        height: 150vh;
         position: relative;
         overflow: hidden;
       }
@@ -204,7 +204,7 @@
       .content {
         position: relative;
         z-index: 200;
-        margin-top: 300vh;
+        margin-top: 150vh;
         background: #000;
         color: #fff;
         min-height: 100vh;
@@ -509,14 +509,14 @@
         <h2 class="section-title">About me</h2>
         <div style="max-width: 800px; margin: 0 auto; font-size: 1.2rem; color: #a0a0a0; line-height: 1.6;">
           <p style="margin-bottom: 2rem;">
-            I'm a Computer Vision & Robotics Engineer passionate about creating intelligent systems 
-            that understand and interact with the world. With experience spanning from NASA JPL's 
-            DARPA SubT competition to Toyota's autonomous vehicle fleet, I specialize in bridging 
+            I'm a Computer Vision & Robotics Engineer passionate about creating intelligent systems
+            that understand and interact with the world. With experience spanning from NASA JPL's
+            DARPA SubT competition to Toyota's autonomous vehicle fleet, I specialize in bridging
             the gap between cutting-edge research and production-ready systems.
           </p>
           <p>
-            My expertise lies in perception systems, SLAM, sensor fusion, and deep learning. 
-            I believe in building technology that's not just innovative, but reliable, scalable, 
+            My expertise lies in perception systems, SLAM, sensor fusion, and deep learning.
+            I believe in building technology that's not just innovative, but reliable, scalable,
             and impactful in real-world applications.
           </p>
         </div>
@@ -604,7 +604,7 @@
             <img src="/project/semantic-slam/featured.png" alt="Semantic SLAM" class="project-image" />
             <h3>Semantic SLAM</h3>
             <div class="project-description">
-              Object-level data association and real-time semantic mapping system that integrates 
+              Object-level data association and real-time semantic mapping system that integrates
               deep learning with traditional SLAM techniques for robust autonomous navigation.
             </div>
             <a href="/pdf/Semantic_SLAM.pdf" target="_blank" class="project-link">View Paper</a>
@@ -614,7 +614,7 @@
             <img src="/project/motion-forcasting/featured.png" alt="Motion Forecasting" class="project-image" />
             <h3>Motion Forecasting</h3>
             <div class="project-description">
-              Trajectory prediction system using social context on the Argoverse dataset. 
+              Trajectory prediction system using social context on the Argoverse dataset.
               Implemented GANs and Social LSTM for autonomous vehicle path planning.
             </div>
             <a href="/project/motion-forcasting/Motion-Forecasting.pdf" target="_blank" class="project-link">View Report</a>
@@ -633,7 +633,7 @@
             <img src="/project/butler/featured.jpg" alt="Butler Robot" class="project-image" />
             <h3>Butler Robot</h3>
             <div class="project-description">
-              Custom autonomous ground vehicle designed for indoor navigation. Features advanced 
+              Custom autonomous ground vehicle designed for indoor navigation. Features advanced
               perception capabilities and real-time path planning in dynamic environments.
             </div>
             <a href="/project/butler/featured.jpg" target="_blank" class="project-link">View Project</a>
@@ -643,7 +643,7 @@
             <img src="/project/dqn/featured.gif" alt="DQN Breakout" class="project-image" />
             <h3>DQN — Breakout</h3>
             <div class="project-description">
-              Dueling Deep Q-Network trained to play Atari Breakout game. Demonstrates advanced 
+              Dueling Deep Q-Network trained to play Atari Breakout game. Demonstrates advanced
               reinforcement learning techniques and neural network optimization.
             </div>
             <a href="https://github.com/kartiksonu/Reinforcement-Learning-CS525" target="_blank" class="project-link">View Code</a>
@@ -653,7 +653,7 @@
             <img src="/project/icp/featured.gif" alt="ICP" class="project-image" />
             <h3>ICP</h3>
             <div class="project-description">
-              Iterative Closest Point algorithm implementation for geometry processing and 
+              Iterative Closest Point algorithm implementation for geometry processing and
               point cloud registration with real-time visualization.
             </div>
             <a href="/project/icp/slides.pdf" target="_blank" class="project-link">View Slides</a>
@@ -663,7 +663,7 @@
             <img src="/project/obstacle-avoidance/featured.gif" alt="Obstacle Avoidance" class="project-image" />
             <h3>Obstacle Avoidance</h3>
             <div class="project-description">
-              Random walk and obstacle avoidance simulation in confined environments. 
+              Random walk and obstacle avoidance simulation in confined environments.
               Demonstrates path planning and collision detection algorithms.
             </div>
             <a href="https://github.com/kartiksonu/Obstacle_avoidance_randomwalk" target="_blank" class="project-link">View Code</a>
@@ -673,7 +673,7 @@
             <img src="/project/impedance-control/featured.gif" alt="Impedance Control" class="project-image" />
             <h3>Impedance Control</h3>
             <div class="project-description">
-              Implementing impedance control on KUKA LWR and dVRK Master Tool Manipulator (MTM) 
+              Implementing impedance control on KUKA LWR and dVRK Master Tool Manipulator (MTM)
               for precise robotic manipulation and force feedback.
             </div>
             <a href="/project/impedance-control/report.pdf" target="_blank" class="project-link">View Report</a>
@@ -683,7 +683,7 @@
             <img src="/project/sara/featured.png" alt="SARA" class="project-image" />
             <h3>SARA</h3>
             <div class="project-description">
-              Semi-Autonomous Robot Assistant - a mobile wheelchair equipped with navigation 
+              Semi-Autonomous Robot Assistant - a mobile wheelchair equipped with navigation
               and vision modules for assisted mobility and autonomous operation.
             </div>
             <a href="https://github.com/kartiksonu/SARA" target="_blank" class="project-link">View Code</a>
@@ -746,7 +746,7 @@
       <section class="contact" id="contact">
         <h2>Let's connect</h2>
         <p class="contact-text">
-          Interested in collaborating on computer vision, robotics, or autonomous systems projects? 
+          Interested in collaborating on computer vision, robotics, or autonomous systems projects?
           Let's discuss how we can build the future together.
         </p>
         <div class="contact-links">
@@ -769,16 +769,16 @@
       // Scroll-triggered transition effect
       window.addEventListener('scroll', () => {
         const scrolled = window.pageYOffset;
-        const windowHeight = window.innerHeight;
-        const heroHeight = windowHeight * 3; // 300vh
+                const windowHeight = window.innerHeight;
+        const heroHeight = windowHeight * 1.5; // 150vh
         
         // Calculate scroll progress (0 to 1)
-        const progress = Math.min(scrolled / (heroHeight * 0.6), 1);
-        
+        const progress = Math.min(scrolled / (heroHeight * 0.8), 1);
+
         // Transition overlay sweeps from right to left
         const overlay = document.getElementById('transitionOverlay');
         overlay.style.width = `${progress * 100}%`;
-        
+
         // Change text color when overlay covers it
         const heroText = document.getElementById('heroText');
         if (progress > 0.4) {
@@ -788,24 +788,24 @@
           heroText.style.color = '#333';
           heroText.style.textShadow = '2px 2px 4px rgba(0,0,0,0.1)';
         }
-        
+
         // Show elements at different scroll points
         const photo = document.getElementById('heroPhoto');
         const subtitle = document.getElementById('heroSubtitle');
         const links = document.getElementById('heroLinks');
-        
+
         if (progress > 0.3) {
           photo.classList.add('visible');
         } else {
           photo.classList.remove('visible');
         }
-        
+
         if (progress > 0.5) {
           subtitle.classList.add('visible');
         } else {
           subtitle.classList.remove('visible');
         }
-        
+
         if (progress > 0.7) {
           links.classList.add('visible');
         } else {
