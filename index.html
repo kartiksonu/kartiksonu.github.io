@@ -275,152 +275,177 @@
         line-height: 1.2;
       }
 
-      /* Timeline Experience Section */
-      .timeline-container {
-        max-width: 800px;
+      /* Experience Timeline */
+      .experience-list {
+        max-width: 900px;
         margin: 0 auto;
-        position: relative;
-        padding: 0 20px;
       }
 
-      /* Timeline vertical line */
-      .timeline-line {
-        position: absolute;
-        left: calc(100px - 0px); /* line sits exactly on the column boundary */
-        top: 0;
-        bottom: 0;
-        width: 2px;
-        transform: translateX(-1px); /* center the 2px line on the boundary */
-        background: rgba(255, 255, 255, 0.2);
-      }
-
-      /* Timeline entries */
-      .timeline-entry {
-        position: relative;
+      .experience-item {
+        padding: 50px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         display: grid;
-        grid-template-columns: 100px 1fr;
-        gap: 60px;
-        margin-bottom: 80px;
-        opacity: 0;
-        transform: translateY(20px);
-        transition: all 0.6s ease-out;
+        grid-template-columns: 200px 1fr;
+        gap: 50px;
+        align-items: start;
       }
 
-      .timeline-entry.visible {
-        opacity: 1;
-        transform: translateY(0);
+      .experience-item:last-child {
+        border-bottom: none;
       }
 
-      .timeline-entry:hover .timeline-dot {
-        background: #555;
-      }
-
-      /* Timeline date/year */
-      .timeline-date {
-        text-align: right;
-        position: relative;
-      }
-
-      .timeline-year {
-        font-size: 1.3rem;
+      .experience-date {
+        color: #4a9eff;
         font-weight: 700;
-        color: #777;
-        font-family: "Montserrat", sans-serif;
-        margin-bottom: 0.25rem;
-      }
-
-      .timeline-month {
-        font-size: 0.85rem;
-        color: #666;
-        font-weight: 500;
-        text-transform: capitalize;
-      }
-
-      /* Timeline dot */
-      .timeline-dot {
-        position: absolute;
-        right: -7px; /* center on the column boundary */
-        top: 10px;
-        width: 14px;
-        height: 14px;
-        background: #666;
-        border-radius: 50%;
-        z-index: 2;
-      }
-
-      .timeline-entry.current .timeline-dot {
-        background: #555;
-        box-shadow: 0 0 0 3px rgba(85, 85, 85, 0.1);
-      }
-
-      /* Now indicator */
-      .timeline-now {
-        position: relative;
-        margin-bottom: 20px;
-        padding-left: 60px;
-      }
-
-      .timeline-now-text {
-        font-size: 1rem;
-        color: #666;
-        font-weight: 600;
-        font-family: "Space Grotesk", sans-serif;
+        font-size: 0.95rem;
         text-transform: uppercase;
         letter-spacing: 1.5px;
-        position: relative;
-        left: 40px;
+        font-family: "Space Grotesk", sans-serif;
       }
 
-      /* Timeline content */
-      .timeline-content {
-        padding-left: 20px;
-      }
-
-      .timeline-content h3 {
-        font-size: 1.6rem;
-        font-weight: 700;
-        margin-bottom: 0.5rem;
+      .experience-content h3 {
+        font-size: 1.65rem;
+        font-weight: 800;
+        margin-bottom: 0.75rem;
         font-family: "Poppins", sans-serif;
-        color: #e0e0e0;
+        letter-spacing: 0;
         line-height: 1.3;
       }
 
-      .timeline-subtitle {
-        font-size: 1rem;
-        color: #888;
-        margin-bottom: 1.2rem;
+      .experience-company {
+        color: #a0a0a0;
+        font-size: 1.2rem;
         font-weight: 600;
-      }
-
-      .timeline-description {
-        color: #888;
-        line-height: 1.8;
-        font-weight: 400;
-        letter-spacing: 0.01em;
         margin-bottom: 1rem;
       }
 
-      .timeline-meta {
-        font-size: 0.9rem;
-        color: #666;
+      .experience-description {
+        color: #a0a0a0;
+        line-height: 1.8;
         font-weight: 500;
-        margin-top: 1rem;
+        letter-spacing: 0.02em;
       }
 
-      .timeline-tools {
-        margin-top: 1rem;
-        display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
+      /* Scroll-animated Timeline */
+      .timeline {
+        position: relative;
+        max-width: 1000px;
+        margin: 0 auto;
       }
 
-      .timeline-tools span {
-        display: inline-block;
-        padding: 4px 12px;
-        background: rgba(255, 255, 255, 0.05);
-        border-radius: 20px;
-        font-size: 0.85rem;
-        color: #666;
+      .timeline-now {
+        position: sticky;
+        top: 140px;
+        left: 0;
+        font-weight: 700;
+        color: #eaeaea;
+        opacity: 0.9;
+        z-index: 2;
+        height: 0;
+        pointer-events: none;
+        transform: translateX(16px);
+      }
+
+      .timeline-list {
+        position: relative;
+        padding-left: 0;
+      }
+
+      /* Base rail */
+      .timeline-list::before {
+        content: "";
+        position: absolute;
+        left: 140px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: rgba(255, 255, 255, 0.12);
+      }
+
+      /* Progress fill */
+      .timeline-list::after {
+        content: "";
+        position: absolute;
+        left: 140px;
+        top: 0;
+        width: 2px;
+        height: var(--progress, 0%);
+        background: #4a9eff;
+        box-shadow: 0 0 12px rgba(74,158,255,0.65);
+        transform-origin: top;
+      }
+
+      .tl-item {
+        display: grid;
+        grid-template-columns: 120px 40px 1fr;
+        gap: 24px;
+        align-items: start;
+        padding: 36px 0;
+        opacity: 0.28;
+        transform: translateY(24px);
+        transition: opacity 0.45s ease, transform 0.45s ease;
+      }
+
+      .tl-year {
+        color: #d0d0d0;
+        font-weight: 700;
+        font-size: 1.05rem;
+        letter-spacing: 1px;
+      }
+
+      .tl-marker {
+        position: relative;
+        height: 100%;
+      }
+
+      .tl-dot {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: #000;
+        border: 3px solid #fff;
+        box-shadow: 0 0 0 4px rgba(74,158,255,0);
+        position: relative;
+        top: 2px;
+        left: 11px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+      }
+
+      .tl-card h3 {
+        font-size: 1.65rem;
+        font-weight: 800;
+        margin-bottom: 0.5rem;
+        font-family: "Poppins", sans-serif;
+        letter-spacing: 0;
+        line-height: 1.3;
+      }
+
+      .tl-company {
+        color: #a0a0a0;
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+      }
+
+      .tl-desc {
+        color: #a0a0a0;
+        line-height: 1.75;
+        letter-spacing: 0.02em;
+      }
+
+      .tl-item.is-inview {
+        opacity: 0.6;
+        transform: translateY(0);
+      }
+
+      .tl-item.is-active {
+        opacity: 1;
+      }
+
+      .tl-item.is-active .tl-dot {
+        background: #4a9eff;
+        border-color: #4a9eff;
+        box-shadow: 0 0 0 6px rgba(74,158,255,0.25), 0 12px 28px rgba(0,0,0,0.45);
+        transform: scale(1.12);
       }
 
       /* Projects Grid */
@@ -578,54 +603,6 @@
         font-weight: 500;
       }
 
-      /* Timeline Mobile Responsive */
-      @media (max-width: 768px) {
-        .timeline-container {
-          padding: 0 10px;
-        }
-
-        .timeline-line {
-          left: 60px;
-          transform: translateX(-1px);
-        }
-
-        .timeline-entry {
-          grid-template-columns: 60px 1fr;
-          gap: 30px;
-          margin-bottom: 60px;
-        }
-
-        .timeline-dot {
-          right: -5px;
-          width: 10px;
-          height: 10px;
-        }
-
-        .timeline-year {
-          font-size: 1.2rem;
-        }
-
-        .timeline-month {
-          font-size: 0.8rem;
-        }
-
-        .timeline-content {
-          padding-left: 10px;
-        }
-
-        .timeline-content h3 {
-          font-size: 1.4rem;
-        }
-
-        .timeline-now {
-          padding-left: 20px;
-        }
-
-        .timeline-now-text {
-          left: 40px;
-        }
-      }
-
       /* Mobile Responsive */
       @media (max-width: 768px) {
         .header {
@@ -679,6 +656,28 @@
         .contact-links {
           flex-direction: column;
           align-items: center;
+        }
+
+        /* Timeline - mobile adjustments */
+        .timeline-now {
+          top: 88px;
+          transform: none;
+          font-size: 0.95rem;
+        }
+
+        .timeline-list::before,
+        .timeline-list::after {
+          left: 24px;
+        }
+
+        .tl-item {
+          grid-template-columns: 60px 32px 1fr;
+          gap: 16px;
+          padding: 28px 0;
+        }
+
+        .tl-dot {
+          left: 15px;
         }
       }
     </style>
@@ -750,119 +749,85 @@
         </div>
       </section>
 
-      <!-- Experience Timeline Section -->
+      <!-- Experience Section -->
       <section class="section" id="work">
-        <h2 class="section-title" style="margin-bottom: 3rem;">Here's what I've been up to:</h2>
-        <div class="timeline-container">
-          <div class="timeline-line"></div>
-
-          <!-- Now indicator -->
-          <div class="timeline-now">
-            <span class="timeline-now-text">Now</span>
-          </div>
-
-          <!-- Current Position -->
-          <div class="timeline-entry current">
-            <div class="timeline-date">
-              <div class="timeline-dot"></div>
-            </div>
-            <div class="timeline-content">
-              <h3>Woven by Toyota</h3>
-              <div class="timeline-subtitle">(Since 2022)</div>
-              <div class="timeline-description">
-                As a Localization & Mapping Engineer at Woven by Toyota, I design and develop critical systems for autonomous vehicles. My work includes creating a localization framework for change detection using GTSAM optimization, and building data ingestion modules that process thousands of files in parallel to generate Medium Definition Maps for autonomous driving.
+        <h2 class="section-title">Experience</h2>
+        <div class="timeline" id="experienceTimeline">
+          <div class="timeline-now">Now</div>
+          <div class="timeline-list">
+            <article class="tl-item is-active" data-year="Now">
+              <div class="tl-year">Now</div>
+              <div class="tl-marker"><span class="tl-dot"></span></div>
+              <div class="tl-card">
+                <h3>Localization & Mapping Engineer</h3>
+                <div class="tl-company">Woven by Toyota, Palo Alto, CA • Jun 2022 – Present</div>
+                <div class="tl-desc">
+                  <strong style="font-weight: 700;">Change Detection:</strong> Designed a localization framework for change detection, which identifies changes in road signs and features. This framework uses GTSAM for factorgraph optimization with GPS and SFM-based odometry.<br><br>
+                  <strong style="font-weight: 700;">TSS Ingest Component:</strong> Designed and deployed a data ingestion module to process thousands of data files in parallel. This module generates Medium Definition Maps (MD Maps) for autonomous driving applications.
+                </div>
               </div>
-              <div class="timeline-tools">
-                <span>C++</span>
-                <span>Python</span>
-                <span>GTSAM</span>
-                <span>ROS</span>
-                <span>Computer Vision</span>
-              </div>
-            </div>
-          </div>
+            </article>
 
-          <!-- 2021 -->
-          <div class="timeline-entry">
-            <div class="timeline-date">
-              <div class="timeline-year">2021</div>
-              <div class="timeline-month">August</div>
-              <div class="timeline-dot"></div>
-            </div>
-            <div class="timeline-content">
-              <h3>Velodyne Lidar</h3>
-              <div class="timeline-subtitle">Computer Vision Engineer</div>
-              <div class="timeline-description">
-                Developed a 3D-object tracking and prediction module with occupancy estimation for the Vella Development Kit (VDK), used in ADAS and autonomous driving applications.
+            <article class="tl-item" data-year="2021">
+              <div class="tl-year">2021</div>
+              <div class="tl-marker"><span class="tl-dot"></span></div>
+              <div class="tl-card">
+                <h3>Computer Vision Engineer</h3>
+                <div class="tl-company">Velodyne Lidar, San Jose, CA • Aug 2021 – Mar 2022</div>
+                <div class="tl-desc">
+                  <strong style="font-weight: 700;">3D Lidar Perception:</strong> Developed a 3D-object tracking and prediction module with occupancy estimation for the Vella Development Kit (VDK), which is used in ADAS and autonomous driving applications.
+                </div>
               </div>
-              <div class="timeline-meta">Duration: Aug 2021 - Mar 2022</div>
-            </div>
-          </div>
+            </article>
 
-          <div class="timeline-entry">
-            <div class="timeline-date">
-              <div class="timeline-month">February</div>
-              <div class="timeline-dot"></div>
-            </div>
-            <div class="timeline-content">
-              <h3>Honda Research Institute USA</h3>
-              <div class="timeline-subtitle">Robotics Research Intern</div>
-              <div class="timeline-description">
-                Worked on curiosity-based mapping and navigation in unknown environments, targeting indoor spaces. Benchmarked on custom developed A-star variant.
+            <article class="tl-item" data-year="2021">
+              <div class="tl-year">2021</div>
+              <div class="tl-marker"><span class="tl-dot"></span></div>
+              <div class="tl-card">
+                <h3>Robotics Research Intern</h3>
+                <div class="tl-company">Honda Research Institute USA, San Jose, CA • Feb 2021 – May 2021</div>
+                <div class="tl-desc">
+                  <strong style="font-weight: 700;">Curiosity Based SLAM:</strong> Worked on curiosity based mapping and navigation in unknown environment, targeting indoor spaces. Benchmarked on custom developed A-star variant.
+                </div>
               </div>
-              <div class="timeline-meta">Duration: Feb 2021 - May 2021</div>
-            </div>
-          </div>
+            </article>
 
-          <!-- 2020 -->
-          <div class="timeline-entry">
-            <div class="timeline-date">
-              <div class="timeline-year">2020</div>
-              <div class="timeline-month">August</div>
-              <div class="timeline-dot"></div>
-            </div>
-            <div class="timeline-content">
-              <h3>NASA JPL, Team CoSTAR</h3>
-              <div class="timeline-subtitle">JVSRP Research Intern</div>
-              <div class="timeline-description">
-                Developed an artifact localization method using camera and lidar fusion to accurately report artifact locations. This was used in the final stage of the DARPA SubT competition in 2021.
+            <article class="tl-item" data-year="2020">
+              <div class="tl-year">2020</div>
+              <div class="tl-marker"><span class="tl-dot"></span></div>
+              <div class="tl-card">
+                <h3>JVSRP Research Intern</h3>
+                <div class="tl-company">NASA JPL, Team CoSTAR, Pasadena, CA • Aug 2020 – Jan 2021</div>
+                <div class="tl-desc">
+                  <strong style="font-weight: 700;">Perception of Sub-Terranean Robots:</strong> Developed an artifact localization method using camera and lidar fusion to accurately report artifact locations. This was used in the final stage of the DARPA SubT competition in 2021.
+                </div>
               </div>
-              <div class="timeline-meta">Duration: Aug 2020 - Jan 2021</div>
-            </div>
-          </div>
+            </article>
 
-          <!-- 2019 -->
-          <div class="timeline-entry">
-            <div class="timeline-date">
-              <div class="timeline-year">2019</div>
-              <div class="timeline-month">September</div>
-              <div class="timeline-dot"></div>
-            </div>
-            <div class="timeline-content">
-              <h3>Worcester Polytechnic Institute</h3>
-              <div class="timeline-subtitle">Research Assistant</div>
-              <div class="timeline-description">
-                Integrated a system for semantic-level SLAM, which includes semantic object detection, data association, and loop detection based on semantic objects.
+            <article class="tl-item" data-year="2019">
+              <div class="tl-year">2019</div>
+              <div class="tl-marker"><span class="tl-dot"></span></div>
+              <div class="tl-card">
+                <h3>Research Assistant</h3>
+                <div class="tl-company">Worcester Polytechnic Institute, Worcester, MA • Sep 2019 – Aug 2020</div>
+                <div class="tl-desc">
+                  <strong style="font-weight: 700;">Semantic SLAM:</strong> Integrated a system for semantic-level SLAM, which includes semantic object detection, data association, and loop detection based on semantic objects.
+                </div>
               </div>
-              <div class="timeline-meta">Duration: Sep 2019 - Aug 2020</div>
-            </div>
-          </div>
+            </article>
 
-          <!-- 2017 -->
-          <div class="timeline-entry">
-            <div class="timeline-date">
-              <div class="timeline-year">2017</div>
-              <div class="timeline-month">May</div>
-              <div class="timeline-dot"></div>
-            </div>
-            <div class="timeline-content">
-              <h3>Carnegie Mellon University</h3>
-              <div class="timeline-subtitle">Summer Research Intern</div>
-              <div class="timeline-description">
-                Developed an Rviz plugin for dynamic texture mapping for stiffness visualization. Also created a vision system with Intel RealSense and Hokuyo lidar for a 6-legged robot, implementing RGBD and Monocular SLAM with person tracking.
+            <article class="tl-item" data-year="2017">
+              <div class="tl-year">2017</div>
+              <div class="tl-marker"><span class="tl-dot"></span></div>
+              <div class="tl-card">
+                <h3>Summer Research Intern</h3>
+                <div class="tl-company">Carnegie Mellon University, Pittsburgh, PA • May 2017 – Aug 2017</div>
+                <div class="tl-desc">
+                  <strong style="font-weight: 700;">Dynamic Texture Mapping for Stiffness Visualization:</strong> Developed an Rviz plugin for dynamic texturing. This plugin augments textures to 3D models in real-time and uses texture mapping and projective geometry for the backend.<br><br>
+                  <strong style="font-weight: 700;">Vision System for Modular 6-Legged Robot:</strong> Developed a vision system with an Intel RealSense and Hokuyo lidar for a 6-legged robot. Implemented RGBD and Monocular SLAM with person tracking and 3D mapping using Large Scale Direct SLAM.
+                </div>
               </div>
-              <div class="timeline-meta">Duration: May 2017 - Aug 2017</div>
-            </div>
+            </article>
           </div>
         </div>
       </section>
@@ -1115,26 +1080,49 @@
         });
       });
 
-      // Timeline scroll animations
-      const timelineEntries = document.querySelectorAll('.timeline-entry');
+      // Experience timeline interactions
+      (function() {
+        const timeline = document.getElementById('experienceTimeline');
+        if (!timeline) return;
+        const list = timeline.querySelector('.timeline-list');
+        const items = Array.from(timeline.querySelectorAll('.tl-item'));
 
-      const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-      };
+        const inViewObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            entry.target.classList.toggle('is-inview', entry.isIntersecting);
+          });
+        }, { threshold: 0.25 });
 
-      const timelineObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
+        items.forEach(item => inViewObserver.observe(item));
+
+        function clamp(value, min, max) {
+          return Math.min(Math.max(value, min), max);
+        }
+
+        function updateProgressAndActive() {
+          const listRect = list.getBoundingClientRect();
+          const viewportH = window.innerHeight;
+          const traveled = (viewportH * 0.15) - listRect.top;
+          const progress = clamp(traveled / (listRect.height + viewportH * 0.1), 0, 1);
+          list.style.setProperty('--progress', (progress * 100).toFixed(2) + '%');
+
+          const centerY = viewportH * 0.45;
+          let closest = null;
+          let closestDelta = Infinity;
+          for (const item of items) {
+            const r = item.getBoundingClientRect();
+            const mid = r.top + r.height / 2;
+            const delta = Math.abs(mid - centerY);
+            if (delta < closestDelta) { closestDelta = delta; closest = item; }
           }
-        });
-      }, observerOptions);
+          items.forEach(el => el.classList.remove('is-active'));
+          if (closest) closest.classList.add('is-active');
+        }
 
-      timelineEntries.forEach(entry => {
-        timelineObserver.observe(entry);
-      });
+        window.addEventListener('scroll', updateProgressAndActive, { passive: true });
+        window.addEventListener('resize', updateProgressAndActive);
+        updateProgressAndActive();
+      })();
     </script>
   </body>
 </html>
