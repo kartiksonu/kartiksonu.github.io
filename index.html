@@ -299,6 +299,8 @@
         );
         opacity: 1;
         transition: opacity 0.3s ease;
+        mask-image: linear-gradient(to bottom, black 0%, transparent 0%);
+        -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 0%);
       }
 
       /* Now Indicator */
@@ -316,7 +318,8 @@
         height: 16px;
         background: #4a9eff;
         border-radius: 50%;
-        position: relative;
+        position: absolute;
+        left: 67px;
         z-index: 2;
         box-shadow: 0 0 0 4px rgba(74, 158, 255, 0.2);
       }
@@ -327,6 +330,8 @@
         color: #4a9eff;
         letter-spacing: 0.5px;
         font-family: "Poppins", sans-serif;
+        position: absolute;
+        left: 90px;
       }
 
       /* Timeline Items */
@@ -347,7 +352,7 @@
       .year-marker {
         position: absolute;
         left: -70px;
-        top: 0;
+        top: 10px;
         display: flex;
         align-items: center;
         gap: 24px;
@@ -357,9 +362,10 @@
         width: 12px;
         height: 12px;
         background: #333;
-        border: 2px solid #1a1a1a;
+        border: 2px solid #000;
         border-radius: 50%;
-        position: relative;
+        position: absolute;
+        left: 69px;
         z-index: 2;
         transition: all 0.3s ease;
       }
@@ -375,12 +381,14 @@
         color: #4a4a4a;
         font-family: "Montserrat", sans-serif;
         min-width: 80px;
+        position: absolute;
+        left: 90px;
       }
 
       /* Month label */
       .month-label {
         position: absolute;
-        left: -70px;
+        left: 90px;
         top: 35px;
         font-size: 0.9rem;
         color: #666;
@@ -603,19 +611,32 @@
         .now-indicator {
           margin-left: -40px;
         }
+        
+        .now-marker {
+          left: 47px;
+        }
+        
+        .now-text {
+          left: 70px;
+        }
 
         .year-marker {
           left: -40px;
           gap: 16px;
         }
+        
+        .year-dot {
+          left: 49px;
+        }
 
         .year-text {
           font-size: 1.2rem;
           min-width: 60px;
+          left: 70px;
         }
 
         .month-label {
-          left: -40px;
+          left: 70px;
           font-size: 0.8rem;
         }
 
@@ -759,7 +780,7 @@
         <div class="experience-timeline">
           <!-- Timeline Line -->
           <div class="timeline-line"></div>
-          
+
           <!-- Now Indicator -->
           <div class="now-indicator">
             <div class="now-marker"></div>
@@ -1106,49 +1127,61 @@
         });
       });
 
-      // Timeline scroll animations
-      const timelineObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
-          if (entry.isIntersecting) {
-            // Add delay for staggered animation
-            setTimeout(() => {
-              entry.target.classList.add('visible');
-            }, index * 100);
-          }
+            // Timeline scroll animations - wait for DOM to be ready
+      window.addEventListener('DOMContentLoaded', () => {
+        // Create IntersectionObserver for timeline items
+        const timelineObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              // Get the index of the current item
+              const allItems = document.querySelectorAll('.timeline-item');
+              const index = Array.from(allItems).indexOf(entry.target);
+              
+              // Add delay for staggered animation
+              setTimeout(() => {
+                entry.target.classList.add('visible');
+              }, index * 150);
+            }
+          });
+        }, {
+          threshold: 0.1,
+          rootMargin: '-100px 0px'
         });
-      }, {
-        threshold: 0.2,
-        rootMargin: '0px 0px -50px 0px'
+
+        // Observe all timeline items
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        timelineItems.forEach(item => {
+          timelineObserver.observe(item);
+        });
+
+        // Animate timeline line on scroll
+        const timelineLine = document.querySelector('.timeline-line');
+        const experienceSection = document.querySelector('#work');
+        
+        const updateTimelineProgress = () => {
+          if (!timelineLine || !experienceSection) return;
+          
+          const sectionRect = experienceSection.getBoundingClientRect();
+          const sectionTop = experienceSection.offsetTop;
+          const sectionHeight = experienceSection.offsetHeight;
+          const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+          const windowHeight = window.innerHeight;
+          
+          // Calculate progress based on how much of the section has been scrolled through
+          const scrollProgress = scrollTop + windowHeight - sectionTop;
+          const progress = Math.max(0, Math.min(1, scrollProgress / (sectionHeight + windowHeight * 0.3)));
+          
+          // Update timeline line mask
+          const maskValue = `linear-gradient(to bottom, black ${progress * 100}%, transparent ${progress * 100}%)`;
+          timelineLine.style.maskImage = maskValue;
+          timelineLine.style.webkitMaskImage = maskValue;
+        };
+
+        // Add scroll listener
+        window.addEventListener('scroll', updateTimelineProgress, { passive: true });
+        // Initial call
+        updateTimelineProgress();
       });
-
-      // Observe all timeline items
-      document.querySelectorAll('.timeline-item').forEach(item => {
-        timelineObserver.observe(item);
-      });
-
-      // Animate timeline line on scroll
-      const timelineLine = document.querySelector('.timeline-line');
-      const experienceSection = document.querySelector('#work');
-      
-      const updateTimelineProgress = () => {
-        if (!timelineLine || !experienceSection) return;
-        
-        const sectionTop = experienceSection.offsetTop;
-        const sectionHeight = experienceSection.offsetHeight;
-        const scrollTop = window.pageYOffset;
-        const windowHeight = window.innerHeight;
-        
-        // Calculate how much of the section is visible
-        const visibleStart = scrollTop + windowHeight - sectionTop;
-        const progress = Math.max(0, Math.min(1, visibleStart / (sectionHeight + windowHeight * 0.5)));
-        
-        // Update timeline line mask
-        timelineLine.style.maskImage = `linear-gradient(to bottom, black ${progress * 100}%, transparent ${progress * 100}%)`;
-        timelineLine.style.webkitMaskImage = `linear-gradient(to bottom, black ${progress * 100}%, transparent ${progress * 100}%)`;
-      };
-
-      window.addEventListener('scroll', updateTimelineProgress);
-      updateTimelineProgress(); // Initial call
     </script>
   </body>
 </html>
