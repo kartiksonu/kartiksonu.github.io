@@ -286,10 +286,11 @@
       /* Timeline vertical line */
       .timeline-line {
         position: absolute;
-        left: calc(100px - 1px);
+        left: calc(100px - 0px); /* line sits exactly on the column boundary */
         top: 0;
         bottom: 0;
         width: 2px;
+        transform: translateX(-1px); /* center the 2px line on the boundary */
         background: rgba(255, 255, 255, 0.2);
       }
 
@@ -338,14 +339,13 @@
       /* Timeline dot */
       .timeline-dot {
         position: absolute;
-        left: 100px;
+        right: -7px; /* center on the column boundary */
         top: 10px;
         width: 14px;
         height: 14px;
         background: #666;
         border-radius: 50%;
         z-index: 2;
-        transform: translateX(-50%);
       }
 
       .timeline-entry.current .timeline-dot {
@@ -585,7 +585,8 @@
         }
 
         .timeline-line {
-          left: calc(60px - 1px);
+          left: 60px;
+          transform: translateX(-1px);
         }
 
         .timeline-entry {
@@ -595,10 +596,9 @@
         }
 
         .timeline-dot {
-          left: 60px;
+          right: -5px;
           width: 10px;
           height: 10px;
-          transform: translateX(-50%);
         }
 
         .timeline-year {
