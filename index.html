@@ -102,6 +102,7 @@
         text-align: center;
         pointer-events: none;
         will-change: transform, color, text-shadow;
+        transition: opacity 0.4s ease;
       }
 
       .hero-text h1 {
@@ -127,10 +128,10 @@
       .hero-photo {
         position: fixed;
         top: 50%;
-        right: -60vw;
+        right: -90vw;
         transform: translateY(-50%);
-        height: clamp(60vh, 72vh, 80vh);
-        aspect-ratio: 3 / 4;
+        width: min(85vw, 1400px);
+        height: clamp(65vh, 80vh, 88vh);
         border-radius: 20px;
         overflow: hidden;
         z-index: 50;
@@ -157,21 +158,24 @@
       }
 
       .hero-photo.visible {
-        right: 8%;
+        right: 6%;
       }
 
       /* Subtitle that fades in */
       .hero-subtitle {
         position: fixed;
-        bottom: 25%;
-        left: 8%;
-        max-width: 400px;
+        top: 12%;
+        right: 10%;
+        left: auto;
+        bottom: auto;
+        max-width: 420px;
+        text-align: right;
         font-size: 1.2rem;
         color: #fff;
         opacity: 0;
         transform: translateY(30px);
         transition: all 0.8s ease;
-        z-index: 50;
+        z-index: 60;
         line-height: 1.4;
       }
 
@@ -433,8 +437,8 @@
         }
 
         .hero-photo {
-          height: 55vh;
-          aspect-ratio: 3 / 4;
+          width: 92vw;
+          height: 60vh;
           right: 4%;
         }
 
@@ -811,11 +815,9 @@
           const scale = 1 + (0.93 - 1) * Math.max(0, (lastProgress - 0.2) / 0.6);
           heroText.style.transform = `translate(${translateXPercent}%, -50%) scale(${scale})`;
           if (lastProgress > 0.4) {
-            heroText.style.color = '#fff';
-            heroText.style.textShadow = '2px 2px 4px rgba(0,0,0,0.5)';
+            heroText.style.opacity = 0;
           } else {
-            heroText.style.color = '#333';
-            heroText.style.textShadow = '2px 2px 4px rgba(0,0,0,0.1)';
+            heroText.style.opacity = 1;
           }
 
           // Photo reveal and vignette blend
@@ -828,7 +830,7 @@
           photo.style.setProperty('--fade', fade.toFixed(3));
 
           // Subtitle and links
-          if (lastProgress > 0.45) {
+          if (lastProgress > 0.35) {
             subtitle.classList.add('visible');
           } else {
             subtitle.classList.remove('visible');
