@@ -289,8 +289,8 @@
         left: 120px;
         top: 0;
         bottom: 0;
-        width: 2px;
-        background: rgba(255, 255, 255, 0.1);
+        width: 1px;
+        background: #333;
       }
 
       /* Timeline entries */
@@ -299,10 +299,10 @@
         display: grid;
         grid-template-columns: 100px 1fr;
         gap: 60px;
-        margin-bottom: 80px;
+        margin-bottom: 60px;
         opacity: 0;
-        transform: translateY(30px);
-        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        transform: translateY(40px);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
       }
 
       .timeline-entry.visible {
@@ -337,20 +337,21 @@
       .timeline-date {
         text-align: right;
         position: relative;
+        padding-top: 6px;
       }
 
       .timeline-year {
-        font-size: 1.5rem;
-        font-weight: 800;
-        color: #666;
-        font-family: "Montserrat", sans-serif;
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #888;
+        font-family: "Space Grotesk", sans-serif;
         margin-bottom: 0.25rem;
       }
 
       .timeline-month {
         font-size: 0.9rem;
         color: #555;
-        font-weight: 600;
+        font-weight: 500;
         text-transform: capitalize;
       }
 
@@ -358,13 +359,27 @@
       .timeline-dot {
         position: absolute;
         right: -42px;
-        top: 8px;
-        width: 16px;
-        height: 16px;
+        top: 12px;
+        width: 12px;
+        height: 12px;
         background: #444;
         border-radius: 50%;
         z-index: 2;
         transition: all 0.3s ease;
+      }
+      
+      .timeline-entry.is-year .timeline-year {
+        color: #eee;
+        font-size: 1.5rem;
+        font-weight: 800;
+        font-family: "Montserrat", sans-serif;
+      }
+      
+      .timeline-entry.is-year .timeline-dot {
+        width: 18px;
+        height: 18px;
+        background: #888;
+        top: 10px;
       }
 
       .timeline-entry.current .timeline-dot {
@@ -385,7 +400,7 @@
       /* Now indicator */
       .timeline-now {
         position: relative;
-        margin-bottom: 20px;
+        margin-bottom: 40px;
         padding-left: 60px;
       }
 
@@ -416,9 +431,9 @@
 
       .timeline-subtitle {
         font-size: 1rem;
-        color: #888;
+        color: #aaa;
         margin-bottom: 1.2rem;
-        font-weight: 600;
+        font-weight: 500;
       }
 
       .timeline-description {
@@ -779,12 +794,12 @@
         <h2 class="section-title" style="margin-bottom: 3rem;">Here's what I've been up to:</h2>
         <div class="timeline-container">
           <div class="timeline-line"></div>
-          
+
           <!-- Now indicator -->
           <div class="timeline-now">
             <span class="timeline-now-text">Now</span>
           </div>
-          
+
           <!-- Current Position -->
           <div class="timeline-entry current">
             <div class="timeline-date">
@@ -807,7 +822,7 @@
           </div>
 
           <!-- 2021 -->
-          <div class="timeline-entry">
+          <div class="timeline-entry is-year">
             <div class="timeline-date">
               <div class="timeline-year">2021</div>
               <div class="timeline-month">August</div>
@@ -839,7 +854,7 @@
           </div>
 
           <!-- 2020 -->
-          <div class="timeline-entry">
+          <div class="timeline-entry is-year">
             <div class="timeline-date">
               <div class="timeline-year">2020</div>
               <div class="timeline-month">August</div>
@@ -856,7 +871,7 @@
           </div>
 
           <!-- 2019 -->
-          <div class="timeline-entry">
+          <div class="timeline-entry is-year">
             <div class="timeline-date">
               <div class="timeline-year">2019</div>
               <div class="timeline-month">September</div>
@@ -873,7 +888,7 @@
           </div>
 
           <!-- 2017 -->
-          <div class="timeline-entry">
+          <div class="timeline-entry is-year">
             <div class="timeline-date">
               <div class="timeline-year">2017</div>
               <div class="timeline-month">May</div>
@@ -1141,13 +1156,13 @@
 
       // Timeline scroll animations
       const timelineEntries = document.querySelectorAll('.timeline-entry');
-      
+
       const observerOptions = {
         root: null,
         rootMargin: '0px',
         threshold: 0.1
       };
-      
+
       const timelineObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry, index) => {
           if (entry.isIntersecting) {
@@ -1158,7 +1173,7 @@
           }
         });
       }, observerOptions);
-      
+
       timelineEntries.forEach(entry => {
         timelineObserver.observe(entry);
       });
