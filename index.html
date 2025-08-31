@@ -369,10 +369,11 @@
         left: 140px;
         top: 0;
         width: 2px;
-        height: var(--progress, 0%);
-        background: #4a9eff;
+        height: var(--indicatorSize, 120px);
+        transform: translateY(calc(var(--indicatorTop, 0px) - (var(--indicatorSize, 120px) / 2)));
+        background: linear-gradient(to bottom, rgba(74,158,255,0), #4a9eff 40%, #4a9eff 60%, rgba(74,158,255,0));
         box-shadow: 0 0 12px rgba(74,158,255,0.65);
-        transform-origin: top;
+        pointer-events: none;
       }
 
       .tl-item {
@@ -446,6 +447,11 @@
         border-color: #4a9eff;
         box-shadow: 0 0 0 6px rgba(74,158,255,0.25), 0 12px 28px rgba(0,0,0,0.45);
         transform: scale(1.12);
+      }
+
+      /* Hide duplicate year label for the first (Now) item; sticky label shows current */
+      .tl-item[data-year="Now"] .tl-year {
+        visibility: hidden;
       }
 
       /* Projects Grid */
@@ -1102,11 +1108,16 @@
         function updateProgressAndActive() {
           const listRect = list.getBoundingClientRect();
           const viewportH = window.innerHeight;
-          const traveled = (viewportH * 0.15) - listRect.top;
-          const progress = clamp(traveled / (listRect.height + viewportH * 0.1), 0, 1);
-          list.style.setProperty('--progress', (progress * 100).toFixed(2) + '%');
+          // position the blue indicator at viewport center but clamped to the list bounds
+          const centerY = viewportH * 0.5; // true center
+          const listTopInViewport = listRect.top;
+          const listBottomInViewport = listRect.bottom;
+          const indicatorTop = clamp(centerY, Math.max(0, centerY - (centerY - listTopInViewport)), Math.min(viewportH, viewportH - (listBottomInViewport - centerY)));
+          const relativeTop = clamp(centerY - listRect.top, 0, listRect.height);
+          list.style.setProperty('--indicatorTop', relativeTop.toFixed(2) + 'px');
+          list.style.setProperty('--indicatorSize', '120px');
 
-          const centerY = viewportH * 0.45;
+          // active item selection
           let closest = null;
           let closestDelta = Infinity;
           for (const item of items) {
