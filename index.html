@@ -276,54 +276,163 @@
       }
 
       /* Experience Timeline */
-      .experience-list {
+      .experience-timeline {
         max-width: 900px;
         margin: 0 auto;
+        position: relative;
+        padding-left: 100px;
       }
 
-      .experience-item {
-        padding: 50px 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        display: grid;
-        grid-template-columns: 200px 1fr;
-        gap: 50px;
-        align-items: start;
+      /* Timeline Line */
+      .timeline-line {
+        position: absolute;
+        left: 30px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background-image: repeating-linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0.15) 0,
+          rgba(255, 255, 255, 0.15) 10px,
+          transparent 10px,
+          transparent 20px
+        );
+        opacity: 1;
+        transition: opacity 0.3s ease;
       }
 
-      .experience-item:last-child {
-        border-bottom: none;
+      /* Now Indicator */
+      .now-indicator {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        margin-bottom: 80px;
+        margin-left: -70px;
       }
 
-      .experience-date {
-        color: #4a9eff;
+      .now-marker {
+        width: 16px;
+        height: 16px;
+        background: #4a9eff;
+        border-radius: 50%;
+        position: relative;
+        z-index: 2;
+        box-shadow: 0 0 0 4px rgba(74, 158, 255, 0.2);
+      }
+
+      .now-text {
         font-weight: 700;
-        font-size: 0.95rem;
-        text-transform: uppercase;
-        letter-spacing: 1.5px;
-        font-family: "Space Grotesk", sans-serif;
-      }
-
-      .experience-content h3 {
-        font-size: 1.65rem;
-        font-weight: 800;
-        margin-bottom: 0.75rem;
-        font-family: "Poppins", sans-serif;
-        letter-spacing: 0;
-        line-height: 1.3;
-      }
-
-      .experience-company {
-        color: #a0a0a0;
         font-size: 1.2rem;
-        font-weight: 600;
-        margin-bottom: 1rem;
+        color: #4a9eff;
+        letter-spacing: 0.5px;
+        font-family: "Poppins", sans-serif;
       }
 
-      .experience-description {
-        color: #a0a0a0;
+      /* Timeline Items */
+      .timeline-item {
+        position: relative;
+        padding-bottom: 80px;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .timeline-item.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Year Markers */
+      .year-marker {
+        position: absolute;
+        left: -70px;
+        top: 0;
+        display: flex;
+        align-items: center;
+        gap: 24px;
+      }
+
+      .year-dot {
+        width: 12px;
+        height: 12px;
+        background: #333;
+        border: 2px solid #1a1a1a;
+        border-radius: 50%;
+        position: relative;
+        z-index: 2;
+        transition: all 0.3s ease;
+      }
+
+      .timeline-item.visible .year-dot {
+        background: #666;
+        border-color: #333;
+      }
+
+      .year-text {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #4a4a4a;
+        font-family: "Montserrat", sans-serif;
+        min-width: 80px;
+      }
+
+      /* Month label */
+      .month-label {
+        position: absolute;
+        left: -70px;
+        top: 35px;
+        font-size: 0.9rem;
+        color: #666;
+        font-weight: 600;
+        text-transform: capitalize;
+      }
+
+      /* Experience Content */
+      .timeline-content {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 20px;
+        padding: 35px;
+        margin-left: 50px;
+        transition: all 0.3s ease;
+      }
+
+      .timeline-item:hover .timeline-content {
+        border-color: rgba(74, 158, 255, 0.3);
+        background: rgba(74, 158, 255, 0.02);
+      }
+
+      .timeline-content h3 {
+        font-size: 1.75rem;
+        font-weight: 800;
+        margin-bottom: 0.5rem;
+        font-family: "Poppins", sans-serif;
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+        color: #fff;
+      }
+
+      .timeline-company {
+        color: #4a9eff;
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 1.2rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .timeline-description {
+        color: #b0b0b0;
         line-height: 1.8;
-        font-weight: 500;
+        font-weight: 400;
         letter-spacing: 0.02em;
+      }
+
+      .timeline-description strong {
+        color: #e0e0e0;
+        font-weight: 700;
       }
 
       /* Projects Grid */
@@ -481,6 +590,45 @@
         font-weight: 500;
       }
 
+      /* Timeline Mobile Responsive */
+      @media (max-width: 768px) {
+        .experience-timeline {
+          padding-left: 60px;
+        }
+
+        .timeline-line {
+          left: 20px;
+        }
+
+        .now-indicator {
+          margin-left: -40px;
+        }
+
+        .year-marker {
+          left: -40px;
+          gap: 16px;
+        }
+
+        .year-text {
+          font-size: 1.2rem;
+          min-width: 60px;
+        }
+
+        .month-label {
+          left: -40px;
+          font-size: 0.8rem;
+        }
+
+        .timeline-content {
+          margin-left: 20px;
+          padding: 25px;
+        }
+
+        .timeline-content h3 {
+          font-size: 1.4rem;
+        }
+      }
+
       /* Mobile Responsive */
       @media (max-width: 768px) {
         .header {
@@ -608,71 +756,102 @@
       <!-- Experience Section -->
       <section class="section" id="work">
         <h2 class="section-title">Experience</h2>
-        <div class="experience-list">
-          <div class="experience-item">
-            <div class="experience-date">Jun 2022 – Present</div>
-            <div class="experience-content">
+        <div class="experience-timeline">
+          <!-- Timeline Line -->
+          <div class="timeline-line"></div>
+          
+          <!-- Now Indicator -->
+          <div class="now-indicator">
+            <div class="now-marker"></div>
+            <div class="now-text">Now</div>
+          </div>
+
+          <!-- Timeline Items -->
+          <div class="timeline-item">
+            <div class="year-marker">
+              <div class="year-dot"></div>
+            </div>
+            <div class="timeline-content">
               <h3>Localization & Mapping Engineer</h3>
-              <div class="experience-company">Woven by Toyota, Palo Alto, CA</div>
-              <div class="experience-description">
-                <strong style="font-weight: 700;">Change Detection:</strong> Designed a localization framework for change detection, which identifies changes in road signs and features. This framework uses GTSAM for factorgraph optimization with GPS and SFM-based odometry.<br><br>
-                <strong style="font-weight: 700;">TSS Ingest Component:</strong> Designed and deployed a data ingestion module to process thousands of data files in parallel. This module generates Medium Definition Maps (MD Maps) for autonomous driving applications.
+              <div class="timeline-company">Woven by Toyota <span style="color: #666; font-weight: 400; font-size: 0.95rem; margin-left: 8px;">(Since June 2022)</span></div>
+              <div class="timeline-description">
+                <strong>Change Detection:</strong> Designed a localization framework for change detection, which identifies changes in road signs and features. This framework uses GTSAM for factorgraph optimization with GPS and SFM-based odometry.<br><br>
+                <strong>TSS Ingest Component:</strong> Designed and deployed a data ingestion module to process thousands of data files in parallel. This module generates Medium Definition Maps (MD Maps) for autonomous driving applications.
               </div>
             </div>
           </div>
 
-          <div class="experience-item">
-            <div class="experience-date">Aug 2021 – Mar 2022</div>
-            <div class="experience-content">
+          <div class="timeline-item">
+            <div class="year-marker">
+              <div class="year-dot"></div>
+              <div class="year-text">2022</div>
+            </div>
+            <div class="month-label">March</div>
+            <div class="timeline-content">
               <h3>Computer Vision Engineer</h3>
-              <div class="experience-company">Velodyne Lidar, San Jose, CA</div>
-              <div class="experience-description">
-                <strong style="font-weight: 700;">3D Lidar Perception:</strong> Developed a 3D-object tracking and prediction module with occupancy estimation for the Vella Development Kit (VDK), which is used in ADAS and autonomous driving applications.
+              <div class="timeline-company">Velodyne Lidar</div>
+              <div class="timeline-description">
+                <strong>3D Lidar Perception:</strong> Developed a 3D-object tracking and prediction module with occupancy estimation for the Vella Development Kit (VDK), which is used in ADAS and autonomous driving applications.
               </div>
             </div>
           </div>
 
-          <div class="experience-item">
-            <div class="experience-date">Feb 2021 – May 2021</div>
-            <div class="experience-content">
+          <div class="timeline-item">
+            <div class="year-marker">
+              <div class="year-dot"></div>
+              <div class="year-text">2021</div>
+            </div>
+            <div class="month-label">May</div>
+            <div class="timeline-content">
               <h3>Robotics Research Intern</h3>
-              <div class="experience-company">Honda Research Institute USA, San Jose, CA</div>
-              <div class="experience-description">
-                <strong style="font-weight: 700;">Curiosity Based SLAM:</strong> Worked on curiosity based mapping and navigation in unknown environment, targeting indoor spaces. Benchmarked on custom developed A-star variant.
+              <div class="timeline-company">Honda Research Institute USA</div>
+              <div class="timeline-description">
+                <strong>Curiosity Based SLAM:</strong> Worked on curiosity based mapping and navigation in unknown environment, targeting indoor spaces. Benchmarked on custom developed A-star variant.
               </div>
             </div>
           </div>
 
-          <div class="experience-item">
-            <div class="experience-date">Aug 2020 – Jan 2021</div>
-            <div class="experience-content">
+          <div class="timeline-item">
+            <div class="year-marker">
+              <div class="year-dot"></div>
+            </div>
+            <div class="month-label">January</div>
+            <div class="timeline-content">
               <h3>JVSRP Research Intern</h3>
-              <div class="experience-company">NASA JPL, Team CoSTAR, Pasadena, CA</div>
-              <div class="experience-description">
-                <strong style="font-weight: 700;">Perception of Sub-Terranean Robots:</strong> Developed an artifact localization method using camera and lidar fusion to accurately report artifact locations. This was used in the final stage of the DARPA SubT competition in 2021.
+              <div class="timeline-company">NASA JPL, Team CoSTAR</div>
+              <div class="timeline-description">
+                <strong>Perception of Sub-Terranean Robots:</strong> Developed an artifact localization method using camera and lidar fusion to accurately report artifact locations. This was used in the final stage of the DARPA SubT competition in 2021.
               </div>
             </div>
           </div>
 
-          <div class="experience-item">
-            <div class="experience-date">Sep 2019 – Aug 2020</div>
-            <div class="experience-content">
+          <div class="timeline-item">
+            <div class="year-marker">
+              <div class="year-dot"></div>
+              <div class="year-text">2020</div>
+            </div>
+            <div class="month-label">August</div>
+            <div class="timeline-content">
               <h3>Research Assistant</h3>
-              <div class="experience-company">Worcester Polytechnic Institute, Worcester, MA</div>
-              <div class="experience-description">
-                <strong style="font-weight: 700;">Semantic SLAM:</strong> Integrated a system for semantic-level SLAM, which includes semantic object detection, data association, and loop detection based on semantic objects.
+              <div class="timeline-company">Worcester Polytechnic Institute</div>
+              <div class="timeline-description">
+                <strong>Semantic SLAM:</strong> Integrated a system for semantic-level SLAM, which includes semantic object detection, data association, and loop detection based on semantic objects.
               </div>
             </div>
           </div>
 
-          <div class="experience-item">
-            <div class="experience-date">May 2017 – Aug 2017</div>
-            <div class="experience-content">
+          <div class="timeline-item">
+            <div class="year-marker">
+              <div class="year-dot"></div>
+              <div class="year-text">2017</div>
+            </div>
+            <div class="month-label">August</div>
+            <div class="timeline-content">
               <h3>Summer Research Intern</h3>
-              <div class="experience-company">Carnegie Mellon University, Pittsburgh, PA</div>
-              <div class="experience-description">
-                <strong style="font-weight: 700;">Dynamic Texture Mapping for Stiffness Visualization:</strong> Developed an Rviz plugin for dynamic texturing. This plugin augments textures to 3D models in real-time and uses texture mapping and projective geometry for the backend.<br><br>
-                <strong style="font-weight: 700;">Vision System for Modular 6-Legged Robot:</strong> Developed a vision system with an Intel RealSense and Hokuyo lidar for a 6-legged robot. Implemented RGBD and Monocular SLAM with person tracking and 3D mapping using Large Scale Direct SLAM.
+              <div class="timeline-company">Carnegie Mellon University</div>
+              <div class="timeline-description">
+                <strong>Dynamic Texture Mapping for Stiffness Visualization:</strong> Developed an Rviz plugin for dynamic texturing. This plugin augments textures to 3D models in real-time and uses texture mapping and projective geometry for the backend.<br><br>
+                <strong>Vision System for Modular 6-Legged Robot:</strong> Developed a vision system with an Intel RealSense and Hokuyo lidar for a 6-legged robot. Implemented RGBD and Monocular SLAM with person tracking and 3D mapping using Large Scale Direct SLAM.
               </div>
             </div>
           </div>
@@ -926,6 +1105,50 @@
           }
         });
       });
+
+      // Timeline scroll animations
+      const timelineObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+          if (entry.isIntersecting) {
+            // Add delay for staggered animation
+            setTimeout(() => {
+              entry.target.classList.add('visible');
+            }, index * 100);
+          }
+        });
+      }, {
+        threshold: 0.2,
+        rootMargin: '0px 0px -50px 0px'
+      });
+
+      // Observe all timeline items
+      document.querySelectorAll('.timeline-item').forEach(item => {
+        timelineObserver.observe(item);
+      });
+
+      // Animate timeline line on scroll
+      const timelineLine = document.querySelector('.timeline-line');
+      const experienceSection = document.querySelector('#work');
+      
+      const updateTimelineProgress = () => {
+        if (!timelineLine || !experienceSection) return;
+        
+        const sectionTop = experienceSection.offsetTop;
+        const sectionHeight = experienceSection.offsetHeight;
+        const scrollTop = window.pageYOffset;
+        const windowHeight = window.innerHeight;
+        
+        // Calculate how much of the section is visible
+        const visibleStart = scrollTop + windowHeight - sectionTop;
+        const progress = Math.max(0, Math.min(1, visibleStart / (sectionHeight + windowHeight * 0.5)));
+        
+        // Update timeline line mask
+        timelineLine.style.maskImage = `linear-gradient(to bottom, black ${progress * 100}%, transparent ${progress * 100}%)`;
+        timelineLine.style.webkitMaskImage = `linear-gradient(to bottom, black ${progress * 100}%, transparent ${progress * 100}%)`;
+      };
+
+      window.addEventListener('scroll', updateTimelineProgress);
+      updateTimelineProgress(); // Initial call
     </script>
   </body>
 </html>
