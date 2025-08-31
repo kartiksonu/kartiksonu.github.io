@@ -36,8 +36,8 @@
         font-family: "Poppins", -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
         line-height: 1.7;
         overflow-x: hidden;
-        background: #f5f5f5;
-        color: #000;
+        background: #1a1a1a;
+        color: #e0e0e0;
         font-weight: 500;
         letter-spacing: 0.02em;
         -webkit-font-smoothing: antialiased;
@@ -64,8 +64,8 @@
         width: 70px;
         height: 70px;
         border-radius: 50%;
-        background: #000;
-        color: #fff;
+        background: #ff8c42;
+        color: #1a1a1a;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -82,12 +82,16 @@
       }
 
       .nav-links a {
-        color: #000;
+        color: #e0e0e0;
         text-decoration: none;
         font-weight: 700;
         font-size: 18px;
         transition: color 0.3s ease;
         letter-spacing: 0.8px;
+      }
+
+      .nav-links a:hover {
+        color: #ff8c42;
       }
 
       /* Hero Section */
@@ -138,9 +142,9 @@
         font-size: clamp(7rem, 17vw, 14rem);
         font-weight: 900;
         line-height: 1.05;
-        color: #111;
+        color: #f0f0f0;
         letter-spacing: -0.02em;
-        text-shadow: 3px 3px 6px rgba(0,0,0,0.15);
+        text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
         transition: color 0.5s ease;
         font-family: "Montserrat", sans-serif;
         margin: 0;
@@ -705,7 +709,7 @@
         background: none;
         border: none;
         font-size: clamp(20px, 5vw, 26px);
-        color: #000;
+        color: #e0e0e0;
         cursor: pointer;
         padding: clamp(10px, 2.5vw, 15px);
         z-index: 1100;
@@ -718,7 +722,8 @@
       }
 
       .mobile-nav-toggle:hover {
-        background-color: rgba(0, 0, 0, 0.1);
+        background-color: rgba(255, 140, 66, 0.2);
+        color: #ff8c42;
       }
 
       .mobile-nav-menu {
@@ -764,9 +769,9 @@
       }
 
       .mobile-nav-menu .nav-links a:hover {
-        color: #4a9eff;
-        background-color: rgba(74, 158, 255, 0.1);
-        border-color: rgba(74, 158, 255, 0.3);
+        color: #ff8c42;
+        background-color: rgba(255, 140, 66, 0.1);
+        border-color: rgba(255, 140, 66, 0.3);
       }
 
       .mobile-nav-overlay {
@@ -795,7 +800,7 @@
 
         .header {
           padding: clamp(12px, 3vh, 20px) clamp(15px, 4vw, 25px);
-          background: rgba(245, 245, 245, 0.95);
+          background: rgba(26, 26, 26, 0.95);
           backdrop-filter: blur(10px);
         }
 
@@ -823,7 +828,7 @@
           padding: clamp(15px, 4vw, 25px);
           position: relative;
           gap: clamp(15px, 3vh, 25px);
-          background: #f5f5f5;
+          background: #1a1a1a;
         }
 
         .hero-text {
@@ -840,7 +845,7 @@
           font-size: clamp(2.5rem, 9vw, 4.5rem);
           line-height: 1.1;
           margin-bottom: 0;
-          color: #111;
+          color: #f0f0f0;
           font-weight: 900;
         }
 
@@ -855,7 +860,7 @@
           padding: 0 clamp(15px, 4vw, 25px);
           margin: clamp(10px, 2vh, 15px) 0;
           order: 2;
-          color: #555;
+          color: #c0c0c0;
           opacity: 1;
         }
 
@@ -897,20 +902,20 @@
           font-size: clamp(13px, 3vw, 16px);
           font-weight: 600;
           padding: clamp(10px, 2.5vw, 14px) clamp(16px, 4vw, 22px);
-          background: #000;
+          background: #ff8c42;
           border-radius: clamp(20px, 5vw, 30px);
           min-height: clamp(40px, 10vw, 48px);
           display: flex;
           align-items: center;
           min-width: clamp(80px, 20vw, 100px);
           justify-content: center;
-          color: #fff;
+          color: #1a1a1a;
           text-decoration: none;
           transition: all 0.3s ease;
         }
 
         .hero-links a:hover {
-          background: #333;
+          background: #ff9d5c;
           transform: translateY(-1px);
         }
 
