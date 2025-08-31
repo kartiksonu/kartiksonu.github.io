@@ -26,6 +26,9 @@
       html {
         scroll-behavior: smooth;
       }
+      :root {
+        --hero-h: 150vh;
+      }
 
       body {
         font-family: "Poppins", -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -87,7 +90,7 @@
 
       /* Hero Section */
       .hero {
-        height: 150vh;
+        height: var(--hero-h);
         position: relative;
         overflow: hidden;
       }
@@ -255,7 +258,7 @@
       .content {
         position: relative;
         z-index: 200;
-        margin-top: 150vh;
+        margin-top: var(--hero-h);
         background: #000;
         color: #fff;
         min-height: 100vh;
@@ -698,14 +701,25 @@
       @media (max-width: 768px) {
         .header {
           padding: 20px;
+          padding-top: calc(20px + env(safe-area-inset-top));
+          backdrop-filter: saturate(180%) blur(8px);
+          background: rgba(0,0,0,0.35);
         }
+
+        .logo {
+          width: 56px;
+          height: 56px;
+          font-size: 11px;
+        }
+
+        :root { --hero-h: 110vh; }
 
         .nav-links {
           display: none;
         }
 
         .hero-text h1 {
-          font-size: clamp(5rem, 13vw, 8rem);
+          font-size: clamp(2.75rem, 12vw, 5.5rem);
           line-height: 1.05;
         }
 
@@ -730,10 +744,15 @@
         }
 
         .hero-links {
+          top: auto;
+          bottom: calc(5% + env(safe-area-inset-bottom));
+          left: 5%;
           right: 5%;
-          top: 10%;
+          justify-content: center;
+          flex-wrap: wrap;
           gap: 18px;
         }
+        .hero-links a { font-size: 16px; }
 
         .experience-item {
           grid-template-columns: 1fr;
@@ -744,10 +763,22 @@
           grid-template-columns: 1fr;
         }
 
+        .section {
+          padding: 90px 24px;
+        }
+
         .contact-links {
           flex-direction: column;
           align-items: center;
         }
+
+        .contact {
+          padding: 90px 24px;
+        }
+
+        .contact-text { font-size: 1.1rem; }
+
+        .publication-title { font-size: 1.2rem; }
 
         /* Timeline - mobile adjustments */
         .timeline-now {
@@ -756,10 +787,12 @@
           font-size: 0.95rem;
         }
 
+        .section-title { font-size: clamp(2.2rem, 8vw, 3.2rem); }
+
         .timeline-list::before,
         .timeline-list::after,
         .tl-rail {
-          left: var(--rail-left-mobile, 24px);
+          left: var(--rail-left, 36px);
         }
 
         .tl-item {
@@ -779,6 +812,7 @@
       /* Reduced motion: disable animated transitions */
       @media (prefers-reduced-motion: reduce) {
         .tl-item { transition: none; }
+        .hero-text, .hero-photo, .hero-subtitle, .hero-links { transition: none !important; }
       }
     </style>
   </head>
@@ -810,7 +844,7 @@
 
       <!-- Photo that slides in -->
       <div class="hero-photo" id="heroPhoto">
-        <img src="./MJB_8981.jpg" alt="Kartik Patath" />
+        <img src="./MJB_8981.jpg" alt="Kartik Patath" decoding="async" fetchpriority="high" />
       </div>
 
       <!-- Subtitle that appears -->
@@ -970,7 +1004,7 @@
         <h2 class="section-title">Featured Projects</h2>
         <div class="projects-grid">
           <div class="project-card">
-            <img src="/project/semantic-slam/featured.png" alt="Semantic SLAM" class="project-image" />
+            <img src="/project/semantic-slam/featured.png" alt="Semantic SLAM" class="project-image" loading="lazy" decoding="async" />
             <h3>Semantic SLAM</h3>
             <div class="project-description">
               Object-level data association and real-time semantic mapping system that integrates
@@ -980,7 +1014,7 @@
           </div>
 
           <div class="project-card">
-            <img src="/project/motion-forcasting/featured.png" alt="Motion Forecasting" class="project-image" />
+            <img src="/project/motion-forcasting/featured.png" alt="Motion Forecasting" class="project-image" loading="lazy" decoding="async" />
             <h3>Motion Forecasting</h3>
             <div class="project-description">
               Trajectory prediction system using social context on the Argoverse dataset.
@@ -990,7 +1024,7 @@
           </div>
 
           <div class="project-card">
-            <img src="/project/curiosity-based-learning/featured.png" alt="Curiosity-Driven Exploration" class="project-image" />
+            <img src="/project/curiosity-based-learning/featured.png" alt="Curiosity-Driven Exploration" class="project-image" loading="lazy" decoding="async" />
             <h3>Curiosity-Driven Exploration</h3>
             <div class="project-description">
               ICM & RND algorithms for intrinsic motivation and exploration in reinforcement learning environments.
@@ -999,7 +1033,7 @@
           </div>
 
           <div class="project-card">
-            <img src="/project/butler/featured.jpg" alt="Butler Robot" class="project-image" />
+            <img src="/project/butler/featured.jpg" alt="Butler Robot" class="project-image" loading="lazy" decoding="async" />
             <h3>Butler Robot</h3>
             <div class="project-description">
               Custom autonomous ground vehicle designed for indoor navigation. Features advanced
@@ -1009,7 +1043,7 @@
           </div>
 
           <div class="project-card">
-            <img src="/project/dqn/featured.gif" alt="DQN Breakout" class="project-image" />
+            <img src="/project/dqn/featured.gif" alt="DQN Breakout" class="project-image" loading="lazy" decoding="async" />
             <h3>DQN — Breakout</h3>
             <div class="project-description">
               Dueling Deep Q-Network trained to play Atari Breakout game. Demonstrates advanced
@@ -1019,7 +1053,7 @@
           </div>
 
           <div class="project-card">
-            <img src="/project/icp/featured.gif" alt="ICP" class="project-image" />
+            <img src="/project/icp/featured.gif" alt="ICP" class="project-image" loading="lazy" decoding="async" />
             <h3>ICP</h3>
             <div class="project-description">
               Iterative Closest Point algorithm implementation for geometry processing and
@@ -1029,7 +1063,7 @@
           </div>
 
           <div class="project-card">
-            <img src="/project/obstacle-avoidance/featured.gif" alt="Obstacle Avoidance" class="project-image" />
+            <img src="/project/obstacle-avoidance/featured.gif" alt="Obstacle Avoidance" class="project-image" loading="lazy" decoding="async" />
             <h3>Obstacle Avoidance</h3>
             <div class="project-description">
               Random walk and obstacle avoidance simulation in confined environments.
@@ -1039,7 +1073,7 @@
           </div>
 
           <div class="project-card">
-            <img src="/project/impedance-control/featured.gif" alt="Impedance Control" class="project-image" />
+            <img src="/project/impedance-control/featured.gif" alt="Impedance Control" class="project-image" loading="lazy" decoding="async" />
             <h3>Impedance Control</h3>
             <div class="project-description">
               Implementing impedance control on KUKA LWR and dVRK Master Tool Manipulator (MTM)
@@ -1049,7 +1083,7 @@
           </div>
 
           <div class="project-card">
-            <img src="/project/sara/featured.png" alt="SARA" class="project-image" />
+            <img src="/project/sara/featured.png" alt="SARA" class="project-image" loading="lazy" decoding="async" />
             <h3>SARA</h3>
             <div class="project-description">
               Semi-Autonomous Robot Assistant - a mobile wheelchair equipped with navigation
@@ -1142,15 +1176,30 @@
         const photo = document.getElementById('heroPhoto');
         const subtitle = document.getElementById('heroSubtitle');
         const links = document.getElementById('heroLinks');
+        const heroSection = document.querySelector('.hero');
 
         let lastProgress = 0;
 
         function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
 
+        function getHeroHeightPx() {
+          if (heroSection) {
+            return heroSection.getBoundingClientRect().height || heroSection.offsetHeight || window.innerHeight * 1.5;
+          }
+          return window.innerHeight * 1.5;
+        }
+
+        let heroHeightCache = getHeroHeightPx();
+
         function onScroll() {
           const scrolled = window.pageYOffset;
-          const windowHeight = window.innerHeight;
-          const heroHeight = windowHeight * 1.5; // 150vh
+          // Recalculate hero height lazily if size changed significantly
+          const currentHeroHeight = getHeroHeightPx();
+          if (Math.abs(currentHeroHeight - heroHeightCache) > 8) {
+            heroHeightCache = currentHeroHeight;
+          }
+
+          const heroHeight = heroHeightCache;
           const raw = Math.max(0, Math.min(scrolled / (heroHeight * 0.8), 1));
           const eased = easeOutCubic(raw);
 
@@ -1196,6 +1245,7 @@
         }
 
         window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', () => { heroHeightCache = getHeroHeightPx(); onScroll(); });
         onScroll();
       })();
 
