@@ -335,7 +335,7 @@
 
       .timeline-now {
         position: sticky;
-        top: 140px;
+        top: 120px;
         left: 0;
         font-weight: 700;
         color: #eaeaea;
@@ -345,6 +345,9 @@
         pointer-events: none;
         transform: translateX(16px);
       }
+
+      /* Hide sticky 'Now' once the first non-current item crosses center */
+      .timeline--past .timeline-now { opacity: 0; }
 
       .timeline-list {
         position: relative;
@@ -364,16 +367,21 @@
 
       /* Progress fill */
       .timeline-list::after {
-        content: "";
-        position: absolute;
+        display: none;
+      }
+
+      /* Center-following blue indicator */
+      .timeline-indicator {
+        position: sticky;
+        top: 50vh;
+        transform: translateY(-50%);
         left: 140px;
-        top: 0;
         width: 2px;
-        height: var(--indicatorSize, 120px);
-        transform: translateY(calc(var(--indicatorTop, 0px) - (var(--indicatorSize, 120px) / 2)));
+        height: 120px;
         background: linear-gradient(to bottom, rgba(74,158,255,0), #4a9eff 40%, #4a9eff 60%, rgba(74,158,255,0));
         box-shadow: 0 0 12px rgba(74,158,255,0.65);
         pointer-events: none;
+        z-index: 1;
       }
 
       .tl-item {
@@ -761,6 +769,7 @@
         <div class="timeline" id="experienceTimeline">
           <div class="timeline-now">Now</div>
           <div class="timeline-list">
+            <span class="timeline-indicator"></span>
             <article class="tl-item is-active" data-year="Now">
               <div class="tl-year">Now</div>
               <div class="tl-marker"><span class="tl-dot"></span></div>
@@ -1108,14 +1117,15 @@
         function updateProgressAndActive() {
           const listRect = list.getBoundingClientRect();
           const viewportH = window.innerHeight;
-          // position the blue indicator at viewport center but clamped to the list bounds
-          const centerY = viewportH * 0.5; // true center
-          const listTopInViewport = listRect.top;
-          const listBottomInViewport = listRect.bottom;
-          const indicatorTop = clamp(centerY, Math.max(0, centerY - (centerY - listTopInViewport)), Math.min(viewportH, viewportH - (listBottomInViewport - centerY)));
-          const relativeTop = clamp(centerY - listRect.top, 0, listRect.height);
-          list.style.setProperty('--indicatorTop', relativeTop.toFixed(2) + 'px');
-          list.style.setProperty('--indicatorSize', '120px');
+          const centerY = viewportH * 0.5; // viewport center
+
+          // Toggle sticky 'Now' visibility: hide it after the second item passes center
+          const second = items[1];
+          if (second) {
+            const r2 = second.getBoundingClientRect();
+            const crossed = (r2.top + r2.height / 2) < centerY;
+            timeline.classList.toggle('timeline--past', crossed);
+          }
 
           // active item selection
           let closest = null;
