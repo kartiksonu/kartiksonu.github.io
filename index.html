@@ -127,10 +127,10 @@
       .hero-photo {
         position: fixed;
         top: 50%;
-        right: -450px;
+        right: -60vw;
         transform: translateY(-50%);
-        width: 380px;
-        height: 500px;
+        height: clamp(60vh, 72vh, 80vh);
+        aspect-ratio: 3 / 4;
         border-radius: 20px;
         overflow: hidden;
         z-index: 50;
@@ -155,7 +155,7 @@
       }
 
       .hero-photo.visible {
-        right: 6%;
+        right: 8%;
       }
 
       /* Subtitle that fades in */
@@ -431,9 +431,9 @@
         }
 
         .hero-photo {
-          width: 250px;
-          height: 350px;
-          right: 5%;
+          height: 55vh;
+          aspect-ratio: 3 / 4;
+          right: 4%;
         }
 
         .hero-photo.visible {
@@ -822,7 +822,7 @@
           } else {
             photo.classList.remove('visible');
           }
-          const fade = Math.min(Math.max((lastProgress - 0.3) / 0.5, 0), 0.85);
+          const fade = Math.min(Math.max((lastProgress - 0.25) / 0.5, 0), 0.9);
           photo.style.setProperty('--fade', fade.toFixed(3));
 
           // Subtitle and links
