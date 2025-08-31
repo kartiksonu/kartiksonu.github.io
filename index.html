@@ -45,7 +45,7 @@
         top: 0;
         left: 0;
         right: 0;
-        z-index: 1000;
+        z-index: 100;
         padding: 30px 40px;
       }
 
@@ -113,6 +113,7 @@
         background: #000;
         z-index: 10;
         transition: none;
+        pointer-events: none; /* do not block clicks on links */
       }
 
       /* Large Typography */
@@ -227,7 +228,8 @@
         opacity: 0;
         transform: translateY(-20px);
         transition: all 0.6s ease;
-        z-index: 60;
+        z-index: 1200; /* above fixed header */
+        pointer-events: auto;
       }
 
       .hero-links.visible {
@@ -344,6 +346,7 @@
         height: 0;
         pointer-events: none;
         transform: translateX(16px);
+        display: none; /* hide duplicate sticky label */
       }
 
       /* Hide sticky 'Now' once the first non-current item crosses center */
@@ -358,31 +361,42 @@
       .timeline-list::before {
         content: "";
         position: absolute;
-        left: 140px;
+        left: var(--rail-left, 164px);
         top: 0;
         bottom: 0;
         width: 2px;
         background: rgba(255, 255, 255, 0.12);
       }
 
-      /* Progress fill */
-      .timeline-list::after {
-        display: none;
+      /* Timeline rails (dynamic) */
+      .tl-rail {
+        position: absolute;
+        left: var(--rail-left, 164px);
+        top: 0;
+        width: 2px;
+        height: 0;
+        border-radius: 2px;
+        pointer-events: none;
+        z-index: 0;
       }
 
-      /* Center-following blue indicator */
-      .timeline-indicator {
-        position: sticky;
-        top: 50vh;
-        transform: translateY(-50%);
-        left: 140px;
-        width: 2px;
-        height: 120px;
-        background: linear-gradient(to bottom, rgba(74,158,255,0), #4a9eff 40%, #4a9eff 60%, rgba(74,158,255,0));
-        box-shadow: 0 0 12px rgba(74,158,255,0.65);
-        pointer-events: none;
-        z-index: 1;
+      .tl-rail--progress {
+        background: rgba(255, 255, 255, 0.55);
       }
+
+      .tl-rail--dashed {
+        background: repeating-linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0.8),
+          rgba(255, 255, 255, 0.8) 6px,
+          rgba(255, 255, 255, 0) 6px,
+          rgba(255, 255, 255, 0) 16px
+        );
+        opacity: 0.75;
+      }
+
+      /* Hide old center-following indicator (replaced by rails) */
+      .timeline-indicator { display: none; }
 
       .tl-item {
         display: grid;
@@ -397,8 +411,8 @@
 
       .tl-year {
         color: #d0d0d0;
-        font-weight: 700;
-        font-size: 1.05rem;
+        font-weight: 800;
+        font-size: 1.35rem;
         letter-spacing: 1px;
       }
 
@@ -408,16 +422,52 @@
       }
 
       .tl-dot {
-        width: 14px;
-        height: 14px;
+        width: 18px;
+        height: 18px;
         border-radius: 50%;
-        background: #000;
-        border: 3px solid #fff;
-        box-shadow: 0 0 0 4px rgba(74,158,255,0);
+        background: #6b6b6b;
+        border: 0;
         position: relative;
         top: 2px;
         left: 11px;
-        transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+        transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, opacity 0.3s ease;
+      }
+
+      /* Date column (Year + Month stacked) */
+      .tl-date {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: center;
+        gap: 6px;
+      }
+
+      .tl-month {
+        position: static;
+        right: auto;
+        top: auto;
+        transform: none;
+        color: #a7a7a7;
+        font-weight: 700;
+        font-size: 1.05rem;
+        letter-spacing: 0.4px;
+        white-space: nowrap;
+        pointer-events: none;
+      }
+
+      .tl-dot::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 40px;
+        height: 40px;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        background: rgba(255,255,255,0.12);
+        box-shadow: 0 0 0 0 rgba(0,0,0,0);
+        transition: all 0.3s ease;
+        pointer-events: none;
       }
 
       .tl-card h3 {
@@ -451,15 +501,42 @@
       }
 
       .tl-item.is-active .tl-dot {
-        background: #4a9eff;
-        border-color: #4a9eff;
-        box-shadow: 0 0 0 6px rgba(74,158,255,0.25), 0 12px 28px rgba(0,0,0,0.45);
-        transform: scale(1.12);
+        background: #202020;
+        transform: scale(1.1);
       }
 
-      /* Hide duplicate year label for the first (Now) item; sticky label shows current */
-      .tl-item[data-year="Now"] .tl-year {
-        visibility: hidden;
+      .tl-item.is-active .tl-dot::after {
+        width: 56px;
+        height: 56px;
+        background: rgba(255,255,255,0.18);
+        box-shadow: 0 10px 24px rgba(0,0,0,0.35);
+      }
+
+      /* Ensure 'Now' year label remains visible */
+      .tl-item[data-year="Now"] .tl-year { visibility: visible; }
+
+      /* Distinct styling for 'Now' marker */
+      .tl-item[data-year="Now"] .tl-dot {
+        background: #1b7a5a;
+      }
+
+      .tl-item[data-year="Now"] .tl-dot::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 10px;
+        height: 10px;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        background: #0e4f38;
+      }
+
+      .tl-item[data-year="Now"] .tl-dot::after {
+        background: rgba(139,211,184,0.35);
+        width: 56px;
+        height: 56px;
+        box-shadow: 0 8px 18px rgba(0,0,0,0.35);
       }
 
       /* Projects Grid */
@@ -680,8 +757,9 @@
         }
 
         .timeline-list::before,
-        .timeline-list::after {
-          left: 24px;
+        .timeline-list::after,
+        .tl-rail {
+          left: var(--rail-left-mobile, 24px);
         }
 
         .tl-item {
@@ -693,6 +771,14 @@
         .tl-dot {
           left: 15px;
         }
+
+        .tl-date { align-items: flex-start; }
+        .tl-month { font-size: 0.95rem; }
+      }
+
+      /* Reduced motion: disable animated transitions */
+      @media (prefers-reduced-motion: reduce) {
+        .tl-item { transition: none; }
       }
     </style>
   </head>
@@ -769,10 +855,17 @@
         <div class="timeline" id="experienceTimeline">
           <div class="timeline-now">Now</div>
           <div class="timeline-list">
+            <span class="tl-rail tl-rail--progress" aria-hidden="true"></span>
+            <span class="tl-rail tl-rail--dashed" aria-hidden="true"></span>
             <span class="timeline-indicator"></span>
             <article class="tl-item is-active" data-year="Now">
-              <div class="tl-year">Now</div>
-              <div class="tl-marker"><span class="tl-dot"></span></div>
+              <div class="tl-date">
+                <div class="tl-year">Now</div>
+                <div class="tl-month">June</div>
+              </div>
+              <div class="tl-marker">
+                <span class="tl-dot"></span>
+              </div>
               <div class="tl-card">
                 <h3>Localization & Mapping Engineer</h3>
                 <div class="tl-company">Woven by Toyota, Palo Alto, CA • Jun 2022 – Present</div>
@@ -783,9 +876,14 @@
               </div>
             </article>
 
-            <article class="tl-item" data-year="2021">
-              <div class="tl-year">2021</div>
-              <div class="tl-marker"><span class="tl-dot"></span></div>
+            <article class="tl-item" data-year="2022">
+              <div class="tl-date">
+                <div class="tl-year">2022</div>
+                <div class="tl-month">March</div>
+              </div>
+              <div class="tl-marker">
+                <span class="tl-dot"></span>
+              </div>
               <div class="tl-card">
                 <h3>Computer Vision Engineer</h3>
                 <div class="tl-company">Velodyne Lidar, San Jose, CA • Aug 2021 – Mar 2022</div>
@@ -796,8 +894,13 @@
             </article>
 
             <article class="tl-item" data-year="2021">
-              <div class="tl-year">2021</div>
-              <div class="tl-marker"><span class="tl-dot"></span></div>
+              <div class="tl-date">
+                <div class="tl-year">2021</div>
+                <div class="tl-month">May</div>
+              </div>
+              <div class="tl-marker">
+                <span class="tl-dot"></span>
+              </div>
               <div class="tl-card">
                 <h3>Robotics Research Intern</h3>
                 <div class="tl-company">Honda Research Institute USA, San Jose, CA • Feb 2021 – May 2021</div>
@@ -807,9 +910,14 @@
               </div>
             </article>
 
-            <article class="tl-item" data-year="2020">
-              <div class="tl-year">2020</div>
-              <div class="tl-marker"><span class="tl-dot"></span></div>
+            <article class="tl-item" data-year="2021">
+              <div class="tl-date">
+                <div class="tl-year">2021</div>
+                <div class="tl-month">January</div>
+              </div>
+              <div class="tl-marker">
+                <span class="tl-dot"></span>
+              </div>
               <div class="tl-card">
                 <h3>JVSRP Research Intern</h3>
                 <div class="tl-company">NASA JPL, Team CoSTAR, Pasadena, CA • Aug 2020 – Jan 2021</div>
@@ -819,9 +927,14 @@
               </div>
             </article>
 
-            <article class="tl-item" data-year="2019">
-              <div class="tl-year">2019</div>
-              <div class="tl-marker"><span class="tl-dot"></span></div>
+            <article class="tl-item" data-year="2020">
+              <div class="tl-date">
+                <div class="tl-year">2020</div>
+                <div class="tl-month">August</div>
+              </div>
+              <div class="tl-marker">
+                <span class="tl-dot"></span>
+              </div>
               <div class="tl-card">
                 <h3>Research Assistant</h3>
                 <div class="tl-company">Worcester Polytechnic Institute, Worcester, MA • Sep 2019 – Aug 2020</div>
@@ -832,8 +945,13 @@
             </article>
 
             <article class="tl-item" data-year="2017">
-              <div class="tl-year">2017</div>
-              <div class="tl-marker"><span class="tl-dot"></span></div>
+              <div class="tl-date">
+                <div class="tl-year">2017</div>
+                <div class="tl-month">August</div>
+              </div>
+              <div class="tl-marker">
+                <span class="tl-dot"></span>
+              </div>
               <div class="tl-card">
                 <h3>Summer Research Intern</h3>
                 <div class="tl-company">Carnegie Mellon University, Pittsburgh, PA • May 2017 – Aug 2017</div>
@@ -1101,6 +1219,8 @@
         if (!timeline) return;
         const list = timeline.querySelector('.timeline-list');
         const items = Array.from(timeline.querySelectorAll('.tl-item'));
+        const railProgress = timeline.querySelector('.tl-rail--progress');
+        const railDashed = timeline.querySelector('.tl-rail--dashed');
 
         const inViewObserver = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
@@ -1115,6 +1235,20 @@
         }
 
         function updateProgressAndActive() {
+          // Compute rail left dynamically from the marker column center
+          const sample = items[0];
+          if (sample) {
+            const marker = sample.querySelector('.tl-marker');
+            const dot = sample.querySelector('.tl-dot');
+            if (marker && dot) {
+              const markerRect = marker.getBoundingClientRect();
+              const listRectForLeft = list.getBoundingClientRect();
+              const dotRect = dot.getBoundingClientRect();
+              const railLeft = Math.round((dotRect.left + dotRect.right) / 2 - listRectForLeft.left);
+              list.style.setProperty('--rail-left', `${railLeft}px`);
+            }
+          }
+
           const listRect = list.getBoundingClientRect();
           const viewportH = window.innerHeight;
           const centerY = viewportH * 0.5; // viewport center
@@ -1127,6 +1261,13 @@
             timeline.classList.toggle('timeline--past', crossed);
           }
 
+          // Rail progress: from list top to viewport center (clamped)
+          const progress = clamp(centerY - listRect.top, 0, listRect.height);
+          if (railProgress) railProgress.style.height = `${progress}px`;
+          // Dashed segment: short trailing section near the top
+          const dashed = clamp(Math.min(progress, 260), 0, listRect.height);
+          if (railDashed) railDashed.style.height = `${dashed}px`;
+
           // active item selection
           let closest = null;
           let closestDelta = Infinity;
@@ -1136,8 +1277,8 @@
             const delta = Math.abs(mid - centerY);
             if (delta < closestDelta) { closestDelta = delta; closest = item; }
           }
-          items.forEach(el => el.classList.remove('is-active'));
-          if (closest) closest.classList.add('is-active');
+          items.forEach(el => { el.classList.remove('is-active'); el.removeAttribute('aria-current'); });
+          if (closest) { closest.classList.add('is-active'); closest.setAttribute('aria-current', 'true'); }
         }
 
         window.addEventListener('scroll', updateProgressAndActive, { passive: true });
