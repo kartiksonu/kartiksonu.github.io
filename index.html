@@ -9,8 +9,9 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="icon" href="/media/icon_hu2e9c6cf66d3af87fdee2833acc3b1756_12919_32x32_fill_lanczos_center_3.png" sizes="32x32" />
     <link rel="apple-touch-icon" href="/media/icon_hu2e9c6cf66d3af87fdee2833acc3b1756_12919_180x180_fill_lanczos_center_3.png" />
@@ -27,11 +28,13 @@
       }
 
       body {
-        font-family: "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-        line-height: 1.6;
+        font-family: "Poppins", -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        line-height: 1.7;
         overflow-x: hidden;
         background: #f5f5f5;
         color: #000;
+        font-weight: 500;
+        letter-spacing: 0.02em;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
       }
@@ -53,17 +56,18 @@
       }
 
       .logo {
-        width: 60px;
-        height: 60px;
+        width: 70px;
+        height: 70px;
         border-radius: 50%;
         background: #000;
         color: #fff;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-weight: 700;
-        font-size: 12px;
-        letter-spacing: 1px;
+        font-weight: 900;
+        font-size: 13px;
+        letter-spacing: 2px;
+        font-family: "Montserrat", sans-serif;
       }
 
       .nav-links {
@@ -75,9 +79,10 @@
       .nav-links a {
         color: #000;
         text-decoration: none;
-        font-weight: 500;
-        font-size: 16px;
+        font-weight: 700;
+        font-size: 18px;
         transition: color 0.3s ease;
+        letter-spacing: 0.8px;
       }
 
       /* Hero Section */
@@ -85,6 +90,17 @@
         height: 150vh;
         position: relative;
         overflow: hidden;
+      }
+
+      /* Add selection styling */
+      ::selection {
+        background: #4a9eff;
+        color: #fff;
+      }
+
+      ::-moz-selection {
+        background: #4a9eff;
+        color: #fff;
       }
 
       /* Transition overlay that sweeps from right to left */
@@ -113,13 +129,15 @@
       }
 
       .hero-text h1 {
-        font-size: clamp(6rem, 15vw, 12rem);
-        font-weight: 800;
-        line-height: 0.8;
-        color: #333;
-        letter-spacing: -0.05em;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        font-size: clamp(7rem, 17vw, 14rem);
+        font-weight: 900;
+        line-height: 1.05;
+        color: #111;
+        letter-spacing: -0.02em;
+        text-shadow: 3px 3px 6px rgba(0,0,0,0.15);
         transition: color 0.5s ease;
+        font-family: "Montserrat", sans-serif;
+        margin: 0;
       }
 
       .hero-text.inverted h1 {
@@ -128,7 +146,8 @@
       }
 
       .hero-text .name {
-        font-weight: 700;
+        font-weight: 900;
+        font-family: "Montserrat", sans-serif;
       }
 
       /* Photo that slides in */
@@ -178,18 +197,18 @@
         max-width: 36rem;
         transform: translateY(-50%);
         text-align: left;
-        font-size: clamp(1.05rem, 1.45vw, 1.2rem);
+        font-size: clamp(1.25rem, 1.65vw, 1.5rem);
         color: #fff;
-        font-weight: 500;
-        letter-spacing: 0;
-        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Plus Jakarta Sans", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        font-weight: 800;
+        letter-spacing: 0.3px;
+        font-family: "Poppins", sans-serif;
         opacity: 0;
         /* initial motion for reveal */
         transform: translateY(calc(-50% + 30px));
         transition: all 0.8s ease;
         z-index: 60;
-        line-height: 1.55;
-        text-shadow: 0 1px 1px rgba(0,0,0,0.6);
+        line-height: 1.6;
+        text-shadow: 0 3px 6px rgba(0,0,0,0.8);
       }
 
       .hero-subtitle.visible {
@@ -219,10 +238,11 @@
       .hero-links a {
         color: #fff;
         text-decoration: none;
-        font-weight: 500;
-        font-size: 16px;
+        font-weight: 700;
+        font-size: 18px;
         text-align: right;
         transition: color 0.3s ease;
+        letter-spacing: 0.5px;
       }
 
       .hero-links a:hover {
@@ -240,16 +260,19 @@
       }
 
       .section {
-        padding: 120px 40px;
+        padding: 140px 40px;
         max-width: 1200px;
         margin: 0 auto;
       }
 
       .section-title {
-        font-size: clamp(2.5rem, 6vw, 4rem);
-        font-weight: 300;
-        margin-bottom: 4rem;
+        font-size: clamp(3rem, 7vw, 5rem);
+        font-weight: 800;
+        margin-bottom: 5rem;
         text-align: center;
+        font-family: "Montserrat", sans-serif;
+        letter-spacing: -0.01em;
+        line-height: 1.2;
       }
 
       /* Experience Timeline */
@@ -259,11 +282,11 @@
       }
 
       .experience-item {
-        padding: 40px 0;
+        padding: 50px 0;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         display: grid;
         grid-template-columns: 200px 1fr;
-        gap: 40px;
+        gap: 50px;
         align-items: start;
       }
 
@@ -273,35 +296,42 @@
 
       .experience-date {
         color: #4a9eff;
-        font-weight: 600;
-        font-size: 0.9rem;
+        font-weight: 700;
+        font-size: 0.95rem;
         text-transform: uppercase;
-        letter-spacing: 1px;
+        letter-spacing: 1.5px;
+        font-family: "Space Grotesk", sans-serif;
       }
 
       .experience-content h3 {
-        font-size: 1.5rem;
-        font-weight: 600;
-        margin-bottom: 0.5rem;
+        font-size: 1.65rem;
+        font-weight: 800;
+        margin-bottom: 0.75rem;
+        font-family: "Poppins", sans-serif;
+        letter-spacing: 0;
+        line-height: 1.3;
       }
 
       .experience-company {
         color: #a0a0a0;
-        font-size: 1.1rem;
+        font-size: 1.2rem;
+        font-weight: 600;
         margin-bottom: 1rem;
       }
 
       .experience-description {
         color: #a0a0a0;
-        line-height: 1.6;
+        line-height: 1.8;
+        font-weight: 500;
+        letter-spacing: 0.02em;
       }
 
       /* Projects Grid */
       .projects-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 40px;
-        margin-top: 4rem;
+        gap: 50px;
+        margin-top: 5rem;
       }
 
       .project-card {
@@ -326,24 +356,30 @@
       }
 
       .project-card h3 {
-        font-size: 1.3rem;
-        font-weight: 600;
-        margin-bottom: 1rem;
+        font-size: 1.5rem;
+        font-weight: 800;
+        margin-bottom: 1.2rem;
+        font-family: "Poppins", sans-serif;
+        letter-spacing: 0;
+        line-height: 1.3;
       }
 
       .project-description {
         color: #a0a0a0;
-        line-height: 1.5;
-        margin-bottom: 1.5rem;
+        line-height: 1.75;
+        margin-bottom: 1.8rem;
+        font-weight: 500;
+        letter-spacing: 0.02em;
       }
 
       .project-link {
         color: #4a9eff;
         text-decoration: none;
-        font-weight: 500;
-        font-size: 0.9rem;
+        font-weight: 700;
+        font-size: 0.95rem;
         text-transform: uppercase;
-        letter-spacing: 1px;
+        letter-spacing: 1.5px;
+        font-family: "Space Grotesk", sans-serif;
       }
 
       /* Publications */
@@ -353,7 +389,7 @@
       }
 
       .publication-item {
-        padding: 30px 0;
+        padding: 40px 0;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       }
 
@@ -362,9 +398,10 @@
       }
 
       .publication-title {
-        font-size: 1.2rem;
-        font-weight: 600;
+        font-size: 1.35rem;
+        font-weight: 700;
         margin-bottom: 1rem;
+        font-family: "Poppins", sans-serif;
       }
 
       .publication-title a {
@@ -379,7 +416,8 @@
 
       .publication-meta {
         color: #a0a0a0;
-        font-size: 0.9rem;
+        font-size: 1rem;
+        font-weight: 500;
       }
 
       /* Contact */
@@ -389,18 +427,24 @@
       }
 
       .contact h2 {
-        font-size: clamp(2.5rem, 6vw, 4rem);
-        font-weight: 300;
-        margin-bottom: 2rem;
+        font-size: clamp(3rem, 7vw, 5rem);
+        font-weight: 800;
+        margin-bottom: 2.5rem;
+        font-family: "Montserrat", sans-serif;
+        letter-spacing: -0.01em;
+        line-height: 1.2;
       }
 
       .contact-text {
-        font-size: 1.2rem;
+        font-size: 1.35rem;
         color: #a0a0a0;
-        margin-bottom: 3rem;
-        max-width: 600px;
+        margin-bottom: 3.5rem;
+        max-width: 650px;
         margin-left: auto;
         margin-right: auto;
+        font-weight: 500;
+        line-height: 1.8;
+        letter-spacing: 0.02em;
       }
 
       .contact-links {
@@ -413,12 +457,13 @@
       .contact-links a {
         color: #fff;
         text-decoration: none;
-        font-size: 1.1rem;
-        font-weight: 500;
-        padding: 15px 30px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        font-size: 1.2rem;
+        font-weight: 700;
+        padding: 18px 35px;
+        border: 2px solid rgba(255, 255, 255, 0.2);
         border-radius: 50px;
         transition: all 0.3s ease;
+        letter-spacing: 0.5px;
       }
 
       .contact-links a:hover {
@@ -432,7 +477,8 @@
         text-align: center;
         padding: 40px;
         color: #a0a0a0;
-        font-size: 0.9rem;
+        font-size: 1rem;
+        font-weight: 500;
       }
 
       /* Mobile Responsive */
@@ -446,7 +492,8 @@
         }
 
         .hero-text h1 {
-          font-size: 6rem;
+          font-size: clamp(5rem, 13vw, 8rem);
+          line-height: 1.05;
         }
 
         .hero-photo {
@@ -464,8 +511,8 @@
           left: 5%;
           right: 5%;
           max-width: none;
-          font-size: 1.05rem;
-          font-weight: 500;
+          font-size: 1.25rem;
+          font-weight: 800;
           transform: translateY(0);
         }
 
@@ -524,9 +571,10 @@
 
       <!-- Subtitle that appears -->
       <div class="hero-subtitle" id="heroSubtitle">
-        An engineer-turned-innovator,<br>
-        building autonomous systems that contribute to a safer, more intelligent<br>
-        and efficient future.
+        An engineer and curious hobbyist,<br>
+        exploring ideas that make technology more<br>
+        accessible and impactful<br>
+        for everyone.
       </div>
 
       <!-- Links that appear -->
@@ -542,11 +590,11 @@
       <!-- About Section -->
       <section class="section" id="about">
         <h2 class="section-title">About me</h2>
-        <div style="max-width: 800px; margin: 0 auto; font-size: 1.2rem; color: #a0a0a0; line-height: 1.6;">
+        <div style="max-width: 800px; margin: 0 auto; font-size: 1.35rem; font-weight: 500; color: #a0a0a0; line-height: 1.8;">
           <p style="margin-bottom: 2rem;">
-            I'm a Computer Vision & Robotics Engineer passionate about creating intelligent systems
-            that understand and interact with the world. With experience spanning from NASA JPL's
-            DARPA SubT competition to Toyota's autonomous vehicle fleet, I specialize in bridging
+            I'm a <strong style="color: #fff; font-weight: 700;">Computer Vision & Robotics Engineer</strong> passionate about creating intelligent systems
+            that understand and interact with the world. With experience spanning from <strong style="color: #fff; font-weight: 700;">NASA JPL's
+            DARPA SubT competition</strong> to <strong style="color: #fff; font-weight: 700;">Toyota's autonomous vehicle fleet</strong>, I specialize in bridging
             the gap between cutting-edge research and production-ready systems.
           </p>
           <p>
@@ -567,8 +615,8 @@
               <h3>Localization & Mapping Engineer</h3>
               <div class="experience-company">Woven by Toyota, Palo Alto, CA</div>
               <div class="experience-description">
-                <strong>Change Detection:</strong> Designed a localization framework for change detection, which identifies changes in road signs and features. This framework uses GTSAM for factorgraph optimization with GPS and SFM-based odometry.<br><br>
-                <strong>TSS Ingest Component:</strong> Designed and deployed a data ingestion module to process thousands of data files in parallel. This module generates Medium Definition Maps (MD Maps) for autonomous driving applications.
+                <strong style="font-weight: 700;">Change Detection:</strong> Designed a localization framework for change detection, which identifies changes in road signs and features. This framework uses GTSAM for factorgraph optimization with GPS and SFM-based odometry.<br><br>
+                <strong style="font-weight: 700;">TSS Ingest Component:</strong> Designed and deployed a data ingestion module to process thousands of data files in parallel. This module generates Medium Definition Maps (MD Maps) for autonomous driving applications.
               </div>
             </div>
           </div>
@@ -579,7 +627,7 @@
               <h3>Computer Vision Engineer</h3>
               <div class="experience-company">Velodyne Lidar, San Jose, CA</div>
               <div class="experience-description">
-                <strong>3D Lidar Perception:</strong> Developed a 3D-object tracking and prediction module with occupancy estimation for the Vella Development Kit (VDK), which is used in ADAS and autonomous driving applications.
+                <strong style="font-weight: 700;">3D Lidar Perception:</strong> Developed a 3D-object tracking and prediction module with occupancy estimation for the Vella Development Kit (VDK), which is used in ADAS and autonomous driving applications.
               </div>
             </div>
           </div>
@@ -590,7 +638,7 @@
               <h3>Robotics Research Intern</h3>
               <div class="experience-company">Honda Research Institute USA, San Jose, CA</div>
               <div class="experience-description">
-                <strong>Curiosity Based SLAM:</strong> Worked on curiosity based mapping and navigation in unknown environment, targeting indoor spaces. Benchmarked on custom developed A-star variant.
+                <strong style="font-weight: 700;">Curiosity Based SLAM:</strong> Worked on curiosity based mapping and navigation in unknown environment, targeting indoor spaces. Benchmarked on custom developed A-star variant.
               </div>
             </div>
           </div>
@@ -601,7 +649,7 @@
               <h3>JVSRP Research Intern</h3>
               <div class="experience-company">NASA JPL, Team CoSTAR, Pasadena, CA</div>
               <div class="experience-description">
-                <strong>Perception of Sub-Terranean Robots:</strong> Developed an artifact localization method using camera and lidar fusion to accurately report artifact locations. This was used in the final stage of the DARPA SubT competition in 2021.
+                <strong style="font-weight: 700;">Perception of Sub-Terranean Robots:</strong> Developed an artifact localization method using camera and lidar fusion to accurately report artifact locations. This was used in the final stage of the DARPA SubT competition in 2021.
               </div>
             </div>
           </div>
@@ -612,7 +660,7 @@
               <h3>Research Assistant</h3>
               <div class="experience-company">Worcester Polytechnic Institute, Worcester, MA</div>
               <div class="experience-description">
-                <strong>Semantic SLAM:</strong> Integrated a system for semantic-level SLAM, which includes semantic object detection, data association, and loop detection based on semantic objects.
+                <strong style="font-weight: 700;">Semantic SLAM:</strong> Integrated a system for semantic-level SLAM, which includes semantic object detection, data association, and loop detection based on semantic objects.
               </div>
             </div>
           </div>
@@ -623,8 +671,8 @@
               <h3>Summer Research Intern</h3>
               <div class="experience-company">Carnegie Mellon University, Pittsburgh, PA</div>
               <div class="experience-description">
-                <strong>Dynamic Texture Mapping for Stiffness Visualization:</strong> Developed an Rviz plugin for dynamic texturing. This plugin augments textures to 3D models in real-time and uses texture mapping and projective geometry for the backend.<br><br>
-                <strong>Vision System for Modular 6-Legged Robot:</strong> Developed a vision system with an Intel RealSense and Hokuyo lidar for a 6-legged robot. Implemented RGBD and Monocular SLAM with person tracking and 3D mapping using Large Scale Direct SLAM.
+                <strong style="font-weight: 700;">Dynamic Texture Mapping for Stiffness Visualization:</strong> Developed an Rviz plugin for dynamic texturing. This plugin augments textures to 3D models in real-time and uses texture mapping and projective geometry for the backend.<br><br>
+                <strong style="font-weight: 700;">Vision System for Modular 6-Legged Robot:</strong> Developed a vision system with an Intel RealSense and Hokuyo lidar for a 6-legged robot. Implemented RGBD and Monocular SLAM with person tracking and 3D mapping using Large Scale Direct SLAM.
               </div>
             </div>
           </div>
