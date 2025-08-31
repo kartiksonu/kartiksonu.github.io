@@ -172,15 +172,18 @@
         left: 6%;
         right: auto;
         bottom: auto;
-        max-width: min(560px, 42vw);
+        max-width: min(640px, 46vw);
         text-align: left;
-        font-size: clamp(1.05rem, 1.45vw, 1.2rem);
+        font-size: clamp(1.15rem, 1.8vw, 1.35rem);
         color: #fff;
+        font-weight: 600;
+        letter-spacing: -0.01em;
         opacity: 0;
         transform: translateY(30px);
         transition: all 0.8s ease;
         z-index: 60;
-        line-height: 1.5;
+        line-height: 1.6;
+        text-shadow: 0 0 24px rgba(255,255,255,0.16), 0 4px 16px rgba(0,0,0,0.6);
       }
 
       .hero-subtitle.visible {
@@ -454,7 +457,9 @@
           left: 5%;
           right: 5%;
           max-width: none;
-          font-size: 1rem;
+          font-size: 1.05rem;
+          font-weight: 600;
+          text-shadow: 0 0 16px rgba(255,255,255,0.14), 0 3px 12px rgba(0,0,0,0.6);
         }
 
         .hero-links {
