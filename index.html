@@ -704,15 +704,15 @@
         display: none;
         background: none;
         border: none;
-        font-size: 22px;
+        font-size: clamp(20px, 5vw, 26px);
         color: #000;
         cursor: pointer;
-        padding: 12px;
+        padding: clamp(10px, 2.5vw, 15px);
         z-index: 1100;
-        border-radius: 8px;
+        border-radius: clamp(6px, 2vw, 10px);
         transition: background-color 0.3s ease;
-        min-height: 44px;
-        min-width: 44px;
+        min-height: clamp(40px, 10vw, 50px);
+        min-width: clamp(40px, 10vw, 50px);
         align-items: center;
         justify-content: center;
       }
@@ -794,15 +794,15 @@
         }
 
         .header {
-          padding: 15px 20px;
+          padding: clamp(12px, 3vh, 20px) clamp(15px, 4vw, 25px);
           background: rgba(245, 245, 245, 0.95);
           backdrop-filter: blur(10px);
         }
 
         .logo {
-          width: 50px;
-          height: 50px;
-          font-size: 11px;
+          width: clamp(45px, 12vw, 60px);
+          height: clamp(45px, 12vw, 60px);
+          font-size: clamp(10px, 2.5vw, 13px);
         }
 
         .nav-links {
@@ -820,9 +820,9 @@
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          padding: 20px;
+          padding: clamp(15px, 4vw, 25px);
           position: relative;
-          gap: 20px;
+          gap: clamp(15px, 3vh, 25px);
           background: #f5f5f5;
         }
 
@@ -837,7 +837,7 @@
         }
 
         .hero-text h1 {
-          font-size: clamp(3rem, 10vw, 4.5rem);
+          font-size: clamp(2.5rem, 9vw, 4.5rem);
           line-height: 1.1;
           margin-bottom: 0;
           color: #111;
@@ -848,12 +848,12 @@
           position: static;
           transform: none;
           width: 100%;
-          max-width: 280px;
-          height: 280px;
-          border-radius: 20px;
+          max-width: clamp(240px, 70vw, 320px);
+          height: clamp(240px, 70vw, 320px);
+          border-radius: clamp(15px, 3vw, 25px);
           order: 2;
           margin: 0;
-          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 clamp(15px, 4vw, 25px) clamp(30px, 8vw, 50px) rgba(0, 0, 0, 0.15);
         }
 
         .hero-photo.visible {
@@ -864,11 +864,11 @@
           position: static;
           transform: none;
           max-width: 100%;
-          font-size: 1rem;
+          font-size: clamp(0.9rem, 2.5vw, 1.1rem);
           font-weight: 600;
           text-align: center;
           line-height: 1.6;
-          padding: 0;
+          padding: 0 clamp(10px, 3vw, 20px);
           margin: 0;
           order: 3;
           color: #555;
@@ -882,7 +882,7 @@
 
         .hero-links {
           position: static;
-          gap: 12px;
+          gap: clamp(8px, 2vw, 15px);
           flex-direction: row;
           align-items: center;
           justify-content: center;
@@ -894,15 +894,15 @@
         }
 
         .hero-links a {
-          font-size: 14px;
+          font-size: clamp(13px, 3vw, 16px);
           font-weight: 600;
-          padding: 12px 20px;
+          padding: clamp(10px, 2.5vw, 14px) clamp(16px, 4vw, 22px);
           background: #000;
-          border-radius: 25px;
-          min-height: 44px;
+          border-radius: clamp(20px, 5vw, 30px);
+          min-height: clamp(40px, 10vw, 48px);
           display: flex;
           align-items: center;
-          min-width: 90px;
+          min-width: clamp(80px, 20vw, 100px);
           justify-content: center;
           color: #fff;
           text-decoration: none;
@@ -926,24 +926,24 @@
         }
 
         .section {
-          padding: 60px 20px;
+          padding: clamp(40px, 8vh, 70px) clamp(15px, 4vw, 25px);
         }
 
         .section-title {
-          font-size: clamp(2.2rem, 7vw, 3.5rem);
-          margin-bottom: 2.5rem;
+          font-size: clamp(2rem, 6vw, 3.5rem);
+          margin-bottom: clamp(2rem, 4vh, 3rem);
           line-height: 1.1;
         }
 
         /* About Section */
         .section#about {
-          padding: 50px 20px;
+          padding: clamp(35px, 7vh, 60px) clamp(15px, 4vw, 25px);
         }
 
         .section#about p {
-          font-size: 1.1rem;
+          font-size: clamp(1rem, 2.5vw, 1.2rem);
           line-height: 1.7;
-          margin-bottom: 1.5rem;
+          margin-bottom: clamp(1.2rem, 3vh, 1.8rem);
         }
 
         .section#about strong {
