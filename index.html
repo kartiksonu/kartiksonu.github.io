@@ -25,6 +25,8 @@
 
       html {
         scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
       }
       :root {
         --hero-h: 150vh;
@@ -702,7 +704,7 @@
         /* Disable overlay/complex hero transitions on mobile */
         .transition-overlay { display: none; }
 
-        .hero { height: auto; padding: 110px 0 20px; }
+        .hero { height: auto; padding: 90px 0 24px; }
 
         .hero-text {
           position: static;
@@ -750,6 +752,8 @@
           height: auto;
           right: auto;
           margin: 0 auto;
+          border-radius: 16px;
+          box-shadow: 0 14px 28px rgba(0,0,0,0.2);
         }
 
         .hero-photo.visible {
@@ -759,12 +763,12 @@
         .hero-subtitle {
           position: static;
           top: auto; left: auto; right: auto;
-          max-width: none;
-          font-size: 1.15rem;
-          font-weight: 800;
+          max-width: 42ch;
+          font-size: clamp(1rem, 3.8vw, 1.2rem);
+          font-weight: 700;
           transform: none;
           opacity: 1;
-          margin: 14px 5% 0;
+          margin: 16px auto 0;
           text-shadow: none;
           color: #101010;
         }
@@ -774,8 +778,8 @@
           top: auto; left: auto; right: auto; bottom: auto;
           justify-content: center;
           flex-wrap: wrap;
-          gap: 14px;
-          margin-top: 18px;
+          gap: 12px;
+          margin-top: 16px;
         }
         .hero-links a { font-size: 16px; color: #0b0b0b; border-color: rgba(0,0,0,0.2); }
         .hero-links a:hover { color: #4a9eff; border-color: #4a9eff; }
