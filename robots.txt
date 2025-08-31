@@ -1,3 +1,3 @@
 User-agent: *
 
-Sitemap: https://kartikpatath.github.io/sitemap.xml
+Sitemap: https://kartiksonu.github.io/sitemap.xml
