@@ -7,6 +7,11 @@
     <meta name="description" content="Portfolio of Kartik Patath — Software Engineer focused on Computer Vision, SLAM, and Robotics." />
     <link rel="canonical" href="https://kartiksonu.github.io/" />
 
+    <!-- Performance optimizations -->
+    <meta name="theme-color" content="#000000" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -25,11 +30,6 @@
 
       html {
         scroll-behavior: smooth;
-        -webkit-text-size-adjust: 100%;
-        text-size-adjust: 100%;
-      }
-      :root {
-        --hero-h: 150vh;
       }
 
       body {
@@ -92,7 +92,7 @@
 
       /* Hero Section */
       .hero {
-        height: var(--hero-h);
+        height: 150vh;
         position: relative;
         overflow: hidden;
       }
@@ -187,6 +187,7 @@
         height: 100%;
         object-fit: cover;
         filter: brightness(0.85) contrast(1.15) saturate(0.95);
+        loading: lazy;
       }
 
       .hero-photo.visible {
@@ -260,7 +261,7 @@
       .content {
         position: relative;
         z-index: 200;
-        margin-top: var(--hero-h);
+        margin-top: 150vh;
         background: #000;
         color: #fff;
         min-height: 100vh;
@@ -699,117 +700,234 @@
         font-weight: 500;
       }
 
+      /* Mobile Navigation */
+      .mobile-nav-toggle {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 24px;
+        color: #000;
+        cursor: pointer;
+        padding: 8px;
+        z-index: 1100;
+      }
+
+      .mobile-nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(20px);
+        z-index: 1050;
+        transition: right 0.3s ease;
+        padding: 80px 40px 40px;
+      }
+
+      .mobile-nav-menu.active {
+        right: 0;
+      }
+
+      .mobile-nav-menu .nav-links {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .mobile-nav-menu .nav-links a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 20px;
+        transition: color 0.3s ease;
+        letter-spacing: 0.8px;
+      }
+
+      .mobile-nav-menu .nav-links a:hover {
+        color: #4a9eff;
+      }
+
+      .mobile-nav-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1040;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+      }
+
+      .mobile-nav-overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
       /* Mobile Responsive */
       @media (max-width: 768px) {
-        /* Disable overlay/complex hero transitions on mobile */
-        .transition-overlay { display: none; }
-
-        .hero { height: auto; padding: 90px 0 24px; }
-
-        .hero-text {
-          position: static;
-          top: auto; left: auto;
-          transform: none;
-          text-align: left;
-          margin: 0 5% 12px;
-          display: none !important;
-        }
         .header {
           padding: 20px;
-          padding-top: calc(20px + env(safe-area-inset-top));
-          backdrop-filter: none;
-          background: transparent;
         }
-        /* Hide big headline to avoid crowding */
-        .hero-text h1 { display: none !important; }
-        .header {
-          padding: 20px;
-          padding-top: calc(20px + env(safe-area-inset-top));
-          backdrop-filter: none !important;
-          background: transparent !important;
-        }
-
-        .logo {
-          width: 56px;
-          height: 56px;
-          font-size: 11px;
-        }
-
-        :root { --hero-h: 110vh; }
 
         .nav-links {
           display: none;
         }
 
+        .mobile-nav-toggle {
+          display: block;
+        }
+
+        /* Hero Section - Mobile Optimized */
+        .hero {
+          height: 100vh; /* Reduced from 150vh for mobile */
+        }
+
+        .hero-text {
+          position: absolute;
+          top: 40%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          z-index: 100;
+          text-align: center;
+          pointer-events: none;
+          transition: all 0.4s ease;
+        }
+
         .hero-text h1 {
-          font-size: clamp(2.75rem, 12vw, 5.5rem);
-          line-height: 1.05;
+          font-size: clamp(3.5rem, 12vw, 6rem);
+          line-height: 1.1;
+          margin-bottom: 0;
         }
 
         .hero-photo {
-          position: static;
-          width: 92vw;
-          height: auto;
+          position: absolute;
+          top: 65%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 85vw;
+          height: 45vh;
           right: auto;
-          margin: 0 auto;
-          border-radius: 16px;
-          box-shadow: 0 14px 28px rgba(0,0,0,0.2);
+          border-radius: 20px;
+          transition: all 0.6s ease;
         }
 
         .hero-photo.visible {
-          right: 5%;
+          right: auto;
         }
 
         .hero-subtitle {
-          position: static;
-          top: auto; left: auto; right: auto;
-          max-width: 42ch;
-          font-size: clamp(0.98rem, 3.6vw, 1.15rem);
-          font-weight: 600;
-          line-height: 1.6;
-          transform: none;
-          opacity: 1;
-          margin: 16px auto 0;
-          text-shadow: none;
-          color: #101010;
+          position: absolute;
+          top: 92%;
+          left: 50%;
+          transform: translateX(-50%);
+          right: auto;
+          max-width: 90vw;
+          font-size: 1.1rem;
+          font-weight: 700;
+          text-align: center;
+          line-height: 1.5;
+          padding: 0 20px;
+        }
+
+        .hero-subtitle.visible {
+          transform: translateX(-50%);
         }
 
         .hero-links {
-          position: static;
-          top: auto; left: auto; right: auto; bottom: auto;
-          justify-content: center;
-          flex-wrap: wrap;
-          gap: 12px;
-          margin-top: 16px;
+          position: absolute;
+          top: 15%;
+          right: 5%;
+          gap: 15px;
+          flex-direction: column;
+          align-items: flex-end;
         }
-        .hero-links a { font-size: 16px; color: #0b0b0b; border-color: rgba(0,0,0,0.2); }
-        .hero-links a:hover { color: #4a9eff; border-color: #4a9eff; }
 
+        .hero-links a {
+          font-size: 16px;
+          padding: 8px 16px;
+          background: rgba(0, 0, 0, 0.7);
+          border-radius: 20px;
+          backdrop-filter: blur(10px);
+          min-height: 44px;
+          display: flex;
+          align-items: center;
+          min-width: 80px;
+          justify-content: center;
+        }
+
+        /* Content Sections */
+        .content {
+          margin-top: 100vh; /* Adjusted for new hero height */
+        }
+
+        .section {
+          padding: 80px 20px;
+        }
+
+        .section-title {
+          font-size: clamp(2.5rem, 8vw, 4rem);
+          margin-bottom: 3rem;
+        }
+
+        /* Experience Section */
         .experience-item {
           grid-template-columns: 1fr;
           gap: 20px;
+          padding: 30px 0;
         }
 
-        .content { margin-top: 0; }
+        .experience-date {
+          margin-bottom: 10px;
+        }
 
+        /* Projects */
         .projects-grid {
           grid-template-columns: 1fr;
+          gap: 30px;
         }
 
-        .section { padding: 70px 22px; }
+        .project-card {
+          padding: 25px;
+        }
+
+        .project-card h3 {
+          font-size: 1.3rem;
+        }
+
+        .project-image {
+          height: 180px;
+        }
+
+        /* Contact */
+        .contact {
+          padding: 80px 20px;
+        }
+
+        .contact-text {
+          font-size: 1.2rem;
+          margin-bottom: 2.5rem;
+        }
 
         .contact-links {
           flex-direction: column;
           align-items: center;
+          gap: 20px;
         }
 
-        .contact {
-          padding: 90px 24px;
+        .contact-links a {
+          width: 200px;
+          text-align: center;
+          min-height: 50px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
-
-        .contact-text { font-size: 1.1rem; }
-
-        .publication-title { font-size: 1.2rem; }
 
         /* Timeline - mobile adjustments */
         .timeline-now {
@@ -818,13 +936,10 @@
           font-size: 0.95rem;
         }
 
-        .section-title { font-size: clamp(1.9rem, 7vw, 2.8rem); }
-        .contact h2 { font-size: clamp(2.2rem, 7vw, 3rem); }
-
         .timeline-list::before,
         .timeline-list::after,
         .tl-rail {
-          left: var(--rail-left, 36px);
+          left: var(--rail-left-mobile, 24px);
         }
 
         .tl-item {
@@ -837,24 +952,81 @@
           left: 15px;
         }
 
-        .tl-date { align-items: flex-start; }
-        .tl-month { font-size: 0.95rem; }
+        .tl-date {
+          align-items: flex-start;
+        }
+
+        .tl-month {
+          font-size: 0.95rem;
+        }
+
+        .tl-card h3 {
+          font-size: 1.4rem;
+        }
+
+        .tl-company {
+          font-size: 1rem;
+        }
+
+        .tl-desc {
+          font-size: 0.95rem;
+          line-height: 1.6;
+        }
+
+        /* Publications */
+        .publications-list {
+          padding: 0 10px;
+        }
+
+        .publication-item {
+          padding: 30px 0;
+        }
+
+        .publication-title {
+          font-size: 1.2rem;
+          line-height: 1.4;
+        }
+
+        .publication-meta {
+          font-size: 0.9rem;
+        }
+
+        /* Improved touch targets */
+        a, button {
+          min-height: 44px;
+          min-width: 44px;
+        }
+
+        /* Better text spacing */
+        p {
+          line-height: 1.6;
+        }
+      }
+
+      /* Tablet adjustments */
+      @media (min-width: 769px) and (max-width: 1024px) {
+        .hero-text h1 {
+          font-size: clamp(6rem, 15vw, 10rem);
+        }
+
+        .hero-photo {
+          width: 80vw;
+          height: 70vh;
+        }
+
+        .section {
+          padding: 120px 30px;
+        }
+
+        .projects-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 40px;
+        }
       }
 
       /* Reduced motion: disable animated transitions */
       @media (prefers-reduced-motion: reduce) {
         .tl-item { transition: none; }
-        .hero-text, .hero-photo, .hero-subtitle, .hero-links { transition: none !important; }
-      }
-
-      /* Lightweight fade-up animations for mobile */
-      @media (max-width: 768px) {
-        .fade-up { opacity: 0; transform: translateY(12px); animation: fadeUp 600ms ease 60ms forwards; }
-        .fade-up.delay-1 { animation-delay: 120ms; }
-        .fade-up.delay-2 { animation-delay: 240ms; }
-      }
-      @keyframes fadeUp {
-        to { opacity: 1; transform: translateY(0); }
       }
     </style>
   </head>
@@ -867,8 +1039,21 @@
           <li><a href="#about">About me</a></li>
           <li><a href="#work">My work</a></li>
         </ul>
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation">
+          ☰
+        </button>
       </nav>
     </header>
+
+    <!-- Mobile Navigation Menu -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+    <nav class="mobile-nav-menu" id="mobileNavMenu">
+      <ul class="nav-links">
+        <li><a href="#about">About me</a></li>
+        <li><a href="#work">My work</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
 
     <!-- Hero Section with Transition -->
     <section class="hero">
@@ -885,12 +1070,12 @@
       </div>
 
       <!-- Photo that slides in -->
-      <div class="hero-photo fade-up" id="heroPhoto">
-        <img src="./MJB_8981.jpg" alt="Kartik Patath" decoding="async" fetchpriority="high" />
+      <div class="hero-photo" id="heroPhoto">
+        <img src="./MJB_8981.jpg" alt="Kartik Patath" loading="lazy" />
       </div>
 
       <!-- Subtitle that appears -->
-      <div class="hero-subtitle fade-up delay-1" id="heroSubtitle">
+      <div class="hero-subtitle" id="heroSubtitle">
         An engineer and curious hobbyist,<br>
         exploring ideas that make technology more<br>
         accessible and impactful<br>
@@ -898,7 +1083,7 @@
       </div>
 
       <!-- Links that appear -->
-      <div class="hero-links fade-up delay-2" id="heroLinks">
+      <div class="hero-links" id="heroLinks">
         <a href="https://www.linkedin.com/in/kartiksonu" target="_blank">LinkedIn</a>
         <a href="/uploads/resume.pdf" target="_blank">Resume</a>
         <a href="#contact">Contact</a>
@@ -1046,7 +1231,7 @@
         <h2 class="section-title">Featured Projects</h2>
         <div class="projects-grid">
           <div class="project-card">
-            <img src="/project/semantic-slam/featured.png" alt="Semantic SLAM" class="project-image" loading="lazy" decoding="async" />
+            <img src="/project/semantic-slam/featured.png" alt="Semantic SLAM" class="project-image" />
             <h3>Semantic SLAM</h3>
             <div class="project-description">
               Object-level data association and real-time semantic mapping system that integrates
@@ -1056,7 +1241,7 @@
           </div>
 
           <div class="project-card">
-            <img src="/project/motion-forcasting/featured.png" alt="Motion Forecasting" class="project-image" loading="lazy" decoding="async" />
+            <img src="/project/motion-forcasting/featured.png" alt="Motion Forecasting" class="project-image" />
             <h3>Motion Forecasting</h3>
             <div class="project-description">
               Trajectory prediction system using social context on the Argoverse dataset.
@@ -1066,7 +1251,7 @@
           </div>
 
           <div class="project-card">
-            <img src="/project/curiosity-based-learning/featured.png" alt="Curiosity-Driven Exploration" class="project-image" loading="lazy" decoding="async" />
+            <img src="/project/curiosity-based-learning/featured.png" alt="Curiosity-Driven Exploration" class="project-image" />
             <h3>Curiosity-Driven Exploration</h3>
             <div class="project-description">
               ICM & RND algorithms for intrinsic motivation and exploration in reinforcement learning environments.
@@ -1075,7 +1260,7 @@
           </div>
 
           <div class="project-card">
-            <img src="/project/butler/featured.jpg" alt="Butler Robot" class="project-image" loading="lazy" decoding="async" />
+            <img src="/project/butler/featured.jpg" alt="Butler Robot" class="project-image" />
             <h3>Butler Robot</h3>
             <div class="project-description">
               Custom autonomous ground vehicle designed for indoor navigation. Features advanced
@@ -1085,7 +1270,7 @@
           </div>
 
           <div class="project-card">
-            <img src="/project/dqn/featured.gif" alt="DQN Breakout" class="project-image" loading="lazy" decoding="async" />
+            <img src="/project/dqn/featured.gif" alt="DQN Breakout" class="project-image" />
             <h3>DQN — Breakout</h3>
             <div class="project-description">
               Dueling Deep Q-Network trained to play Atari Breakout game. Demonstrates advanced
@@ -1095,7 +1280,7 @@
           </div>
 
           <div class="project-card">
-            <img src="/project/icp/featured.gif" alt="ICP" class="project-image" loading="lazy" decoding="async" />
+            <img src="/project/icp/featured.gif" alt="ICP" class="project-image" />
             <h3>ICP</h3>
             <div class="project-description">
               Iterative Closest Point algorithm implementation for geometry processing and
@@ -1105,7 +1290,7 @@
           </div>
 
           <div class="project-card">
-            <img src="/project/obstacle-avoidance/featured.gif" alt="Obstacle Avoidance" class="project-image" loading="lazy" decoding="async" />
+            <img src="/project/obstacle-avoidance/featured.gif" alt="Obstacle Avoidance" class="project-image" />
             <h3>Obstacle Avoidance</h3>
             <div class="project-description">
               Random walk and obstacle avoidance simulation in confined environments.
@@ -1115,7 +1300,7 @@
           </div>
 
           <div class="project-card">
-            <img src="/project/impedance-control/featured.gif" alt="Impedance Control" class="project-image" loading="lazy" decoding="async" />
+            <img src="/project/impedance-control/featured.gif" alt="Impedance Control" class="project-image" />
             <h3>Impedance Control</h3>
             <div class="project-description">
               Implementing impedance control on KUKA LWR and dVRK Master Tool Manipulator (MTM)
@@ -1125,7 +1310,7 @@
           </div>
 
           <div class="project-card">
-            <img src="/project/sara/featured.png" alt="SARA" class="project-image" loading="lazy" decoding="async" />
+            <img src="/project/sara/featured.png" alt="SARA" class="project-image" />
             <h3>SARA</h3>
             <div class="project-description">
               Semi-Autonomous Robot Assistant - a mobile wheelchair equipped with navigation
@@ -1211,6 +1396,54 @@
     <script>
       document.getElementById('year').textContent = new Date().getFullYear();
 
+      // Mobile Navigation
+      (function() {
+        const mobileNavToggle = document.getElementById('mobileNavToggle');
+        const mobileNavMenu = document.getElementById('mobileNavMenu');
+        const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+        const mobileNavLinks = mobileNavMenu.querySelectorAll('a');
+
+        function toggleMobileNav() {
+          const isActive = mobileNavMenu.classList.contains('active');
+
+          if (isActive) {
+            mobileNavMenu.classList.remove('active');
+            mobileNavOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+          } else {
+            mobileNavMenu.classList.add('active');
+            mobileNavOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+          }
+        }
+
+        function closeMobileNav() {
+          mobileNavMenu.classList.remove('active');
+          mobileNavOverlay.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+
+        if (mobileNavToggle) {
+          mobileNavToggle.addEventListener('click', toggleMobileNav);
+        }
+
+        if (mobileNavOverlay) {
+          mobileNavOverlay.addEventListener('click', closeMobileNav);
+        }
+
+        // Close mobile nav when clicking on a link
+        mobileNavLinks.forEach(link => {
+          link.addEventListener('click', closeMobileNav);
+        });
+
+        // Close mobile nav on escape key
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') {
+            closeMobileNav();
+          }
+        });
+      })();
+
       // Scroll-triggered transition effect with easing
       (function() {
         const overlay = document.getElementById('transitionOverlay');
@@ -1218,83 +1451,100 @@
         const photo = document.getElementById('heroPhoto');
         const subtitle = document.getElementById('heroSubtitle');
         const links = document.getElementById('heroLinks');
-        const heroSection = document.querySelector('.hero');
-
-        // Disable heavy hero animations on small screens
-        const mobileMql = window.matchMedia('(max-width: 768px)');
-        if (mobileMql.matches) {
-          return;
-        }
 
         let lastProgress = 0;
+        const isMobile = window.innerWidth <= 768;
 
         function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
 
-        function getHeroHeightPx() {
-          if (heroSection) {
-            return heroSection.getBoundingClientRect().height || heroSection.offsetHeight || window.innerHeight * 1.5;
-          }
-          return window.innerHeight * 1.5;
-        }
-
-        let heroHeightCache = getHeroHeightPx();
-
         function onScroll() {
           const scrolled = window.pageYOffset;
-          // Recalculate hero height lazily if size changed significantly
-          const currentHeroHeight = getHeroHeightPx();
-          if (Math.abs(currentHeroHeight - heroHeightCache) > 8) {
-            heroHeightCache = currentHeroHeight;
-          }
+          const windowHeight = window.innerHeight;
 
-          const heroHeight = heroHeightCache;
-          const raw = Math.max(0, Math.min(scrolled / (heroHeight * 0.8), 1));
-          const eased = easeOutCubic(raw);
+          // Different behavior for mobile vs desktop
+          if (isMobile) {
+            // Simplified mobile animation - show all elements immediately
+            const heroHeight = windowHeight; // 100vh for mobile
+            const raw = Math.max(0, Math.min(scrolled / (heroHeight * 0.7), 1));
+            const eased = easeOutCubic(raw);
+            lastProgress = eased;
 
-          // Make progress deterministic based on scroll position
-          lastProgress = eased;
-          // Strong snap at edges to avoid mid-way states
-          if (scrolled <= 0) lastProgress = 0;
-          if (raw >= 1) lastProgress = 1;
-
-          // Overlay width (right -> left sweep)
-          overlay.style.width = `${Math.max(0, Math.min(lastProgress, 1)) * 100}%`;
-
-          // Text color and motion
-          const translateXPercent = -50 + (-10) * Math.max(0, (lastProgress - 0.2) / 0.6);
-          const scale = 1 + (0.93 - 1) * Math.max(0, (lastProgress - 0.2) / 0.6);
-          heroText.style.transform = `translate(${translateXPercent}%, -50%) scale(${scale})`;
-          if (lastProgress > 0.4) {
-            heroText.style.opacity = 0;
+            // Simplified mobile animations
+            if (scrolled <= 0) {
+              heroText.style.opacity = 1;
+              photo.classList.add('visible');
+              subtitle.classList.add('visible');
+              links.classList.add('visible');
+              overlay.style.width = '0%';
+            } else if (lastProgress > 0.3) {
+              heroText.style.opacity = 0;
+              overlay.style.width = `${Math.min(lastProgress * 100, 100)}%`;
+            }
           } else {
+            // Desktop animation (original)
+            const heroHeight = windowHeight * 1.5; // 150vh
+            const raw = Math.max(0, Math.min(scrolled / (heroHeight * 0.8), 1));
+            const eased = easeOutCubic(raw);
+
+            lastProgress = eased;
+            if (scrolled <= 0) lastProgress = 0;
+            if (raw >= 1) lastProgress = 1;
+
+            // Overlay width (right -> left sweep)
+            overlay.style.width = `${Math.max(0, Math.min(lastProgress, 1)) * 100}%`;
+
+            // Text color and motion
+            const translateXPercent = -50 + (-10) * Math.max(0, (lastProgress - 0.2) / 0.6);
+            const scale = 1 + (0.93 - 1) * Math.max(0, (lastProgress - 0.2) / 0.6);
+            heroText.style.transform = `translate(${translateXPercent}%, -50%) scale(${scale})`;
+            if (lastProgress > 0.4) {
+              heroText.style.opacity = 0;
+            } else {
+              heroText.style.opacity = 1;
+            }
+
+            // Photo reveal and vignette blend
+            if (lastProgress > 0.2) {
+              photo.classList.add('visible');
+            } else {
+              photo.classList.remove('visible');
+            }
+            const fade = Math.min(Math.max((lastProgress - 0.25) / 0.5, 0), 0.9);
+            photo.style.setProperty('--fade', fade.toFixed(3));
+
+            // Subtitle and links
+            if (lastProgress > 0.28) {
+              subtitle.classList.add('visible');
+            } else {
+              subtitle.classList.remove('visible');
+            }
+            if (lastProgress > 0.35) {
+              links.classList.add('visible');
+            } else {
+              links.classList.remove('visible');
+            }
+          }
+        }
+
+        // Initialize mobile elements
+        if (isMobile) {
+          setTimeout(() => {
             heroText.style.opacity = 1;
-          }
-
-          // Photo reveal and vignette blend
-          if (lastProgress > 0.2) {
             photo.classList.add('visible');
-          } else {
-            photo.classList.remove('visible');
-          }
-          const fade = Math.min(Math.max((lastProgress - 0.25) / 0.5, 0), 0.9);
-          photo.style.setProperty('--fade', fade.toFixed(3));
-
-          // Subtitle and links
-          if (lastProgress > 0.28) {
             subtitle.classList.add('visible');
-          } else {
-            subtitle.classList.remove('visible');
-          }
-          if (lastProgress > 0.35) {
             links.classList.add('visible');
-          } else {
-            links.classList.remove('visible');
-          }
+          }, 100);
         }
 
         window.addEventListener('scroll', onScroll, { passive: true });
-        window.addEventListener('resize', () => { heroHeightCache = getHeroHeightPx(); onScroll(); });
         onScroll();
+
+        // Handle orientation changes
+        window.addEventListener('orientationchange', () => {
+          setTimeout(() => {
+            onScroll();
+          }, 500);
+        });
       })();
 
       // Smooth scrolling for navigation links
