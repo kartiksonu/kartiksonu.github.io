@@ -51,7 +51,7 @@
         left: 0;
         right: 0;
         z-index: 1000;
-        padding: 30px 40px;
+        padding: 20px 30px;
         background: #1a1a1a;
         backdrop-filter: blur(10px);
         transition: background-color 0.3s ease;
@@ -65,8 +65,8 @@
       }
 
       .logo {
-        width: 70px;
-        height: 70px;
+        width: 55px;
+        height: 55px;
         border-radius: 50%;
         background: #ff8c42;
         color: #1a1a1a;
@@ -74,24 +74,26 @@
         align-items: center;
         justify-content: center;
         font-weight: 900;
-        font-size: 13px;
-        letter-spacing: 2px;
+        font-size: 11px;
+        letter-spacing: 1.5px;
         font-family: "Montserrat", sans-serif;
       }
 
       .nav-links {
         display: flex;
-        gap: 40px;
+        gap: 25px;
         list-style: none;
+        align-items: center;
       }
 
       .nav-links a {
         color: #e0e0e0;
         text-decoration: none;
         font-weight: 700;
-        font-size: 18px;
+        font-size: 16px;
         transition: color 0.3s ease;
-        letter-spacing: 0.8px;
+        letter-spacing: 0.5px;
+        white-space: nowrap;
       }
 
       .nav-links a:hover {
@@ -232,17 +234,7 @@
 
       /* Links that slide up */
       .hero-links {
-        position: fixed;
-        top: 6%;
-        right: 6%;
-        display: flex;
-        flex-direction: row;
-        gap: 28px;
-        opacity: 0;
-        transform: translateY(-20px);
-        transition: all 0.6s ease;
-        z-index: 1200; /* above fixed header */
-        pointer-events: auto;
+        display: none; /* Hide on desktop since we have navigation */
       }
 
       .hero-links.visible {
@@ -900,6 +892,7 @@
           margin: 0;
           opacity: 1;
           transform: none;
+          display: flex; /* Show on mobile */
         }
 
         .hero-links a {
@@ -1212,6 +1205,9 @@
         <ul class="nav-links">
           <li><a href="#about">About me</a></li>
           <li><a href="#work">My work</a></li>
+          <li><a href="https://www.linkedin.com/in/kartiksonu" target="_blank">LinkedIn</a></li>
+          <li><a href="/uploads/resume.pdf" target="_blank">Resume</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
         <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation">
           ☰
