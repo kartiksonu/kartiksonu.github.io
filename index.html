@@ -793,14 +793,21 @@
           const scrolled = window.pageYOffset;
           const windowHeight = window.innerHeight;
           const heroHeight = windowHeight * 1.5; // 150vh
-          const raw = Math.min(scrolled / (heroHeight * 0.8), 1);
+          const raw = Math.max(0, Math.min(scrolled / (heroHeight * 0.8), 1));
           const eased = easeOutCubic(raw);
 
           // Smooth out rapid wheel deltas
           lastProgress = lerp(lastProgress, eased, 0.25);
+          // Snap to exact ends to avoid getting "stuck" when scrolling stops
+          if (scrolled < 2) {
+            lastProgress = 0;
+          }
+          if (raw > 0.99) {
+            lastProgress = 1;
+          }
 
           // Overlay width (right -> left sweep)
-          overlay.style.width = `${lastProgress * 100}%`;
+          overlay.style.width = `${Math.max(0, Math.min(lastProgress, 1)) * 100}%`;
 
           // Text color and motion
           const translateXPercent = lerp(-50, -60, Math.max(0, (lastProgress - 0.2) / 0.6));
