@@ -699,6 +699,18 @@
 
       /* Mobile Responsive */
       @media (max-width: 768px) {
+        /* Disable overlay/complex hero transitions on mobile */
+        .transition-overlay { display: none; }
+
+        .hero { height: auto; padding: 110px 0 20px; }
+
+        .hero-text {
+          position: static;
+          top: auto; left: auto;
+          transform: none;
+          text-align: left;
+          margin: 0 5% 12px;
+        }
         .header {
           padding: 20px;
           padding-top: calc(20px + env(safe-area-inset-top));
@@ -724,9 +736,11 @@
         }
 
         .hero-photo {
+          position: static;
           width: 92vw;
-          height: 60vh;
-          right: 4%;
+          height: auto;
+          right: auto;
+          margin: 0 auto;
         }
 
         .hero-photo.visible {
@@ -734,23 +748,25 @@
         }
 
         .hero-subtitle {
-          top: 18%;
-          left: 5%;
-          right: 5%;
+          position: static;
+          top: auto; left: auto; right: auto;
           max-width: none;
-          font-size: 1.25rem;
+          font-size: 1.15rem;
           font-weight: 800;
-          transform: translateY(0);
+          transform: none;
+          opacity: 1;
+          margin: 14px 5% 0;
+          text-shadow: none;
+          color: #eaeaea;
         }
 
         .hero-links {
-          top: auto;
-          bottom: calc(5% + env(safe-area-inset-bottom));
-          left: 5%;
-          right: 5%;
+          position: static;
+          top: auto; left: auto; right: auto; bottom: auto;
           justify-content: center;
           flex-wrap: wrap;
-          gap: 18px;
+          gap: 14px;
+          margin-top: 18px;
         }
         .hero-links a { font-size: 16px; }
 
@@ -758,6 +774,8 @@
           grid-template-columns: 1fr;
           gap: 20px;
         }
+
+        .content { margin-top: 0; }
 
         .projects-grid {
           grid-template-columns: 1fr;
@@ -1177,6 +1195,12 @@
         const subtitle = document.getElementById('heroSubtitle');
         const links = document.getElementById('heroLinks');
         const heroSection = document.querySelector('.hero');
+
+        // Disable heavy hero animations on small screens
+        const mobileMql = window.matchMedia('(max-width: 768px)');
+        if (mobileMql.matches) {
+          return;
+        }
 
         let lastProgress = 0;
 
