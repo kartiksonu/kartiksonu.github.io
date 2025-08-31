@@ -710,12 +710,21 @@
           transform: none;
           text-align: left;
           margin: 0 5% 12px;
+          display: none !important;
         }
         .header {
           padding: 20px;
           padding-top: calc(20px + env(safe-area-inset-top));
-          backdrop-filter: saturate(180%) blur(8px);
-          background: rgba(0,0,0,0.35);
+          backdrop-filter: none;
+          background: transparent;
+        }
+        /* Hide big headline to avoid crowding */
+        .hero-text h1 { display: none !important; }
+        .header {
+          padding: 20px;
+          padding-top: calc(20px + env(safe-area-inset-top));
+          backdrop-filter: none !important;
+          background: transparent !important;
         }
 
         .logo {
@@ -757,7 +766,7 @@
           opacity: 1;
           margin: 14px 5% 0;
           text-shadow: none;
-          color: #eaeaea;
+          color: #101010;
         }
 
         .hero-links {
@@ -768,7 +777,8 @@
           gap: 14px;
           margin-top: 18px;
         }
-        .hero-links a { font-size: 16px; }
+        .hero-links a { font-size: 16px; color: #0b0b0b; border-color: rgba(0,0,0,0.2); }
+        .hero-links a:hover { color: #4a9eff; border-color: #4a9eff; }
 
         .experience-item {
           grid-template-columns: 1fr;
@@ -832,6 +842,16 @@
         .tl-item { transition: none; }
         .hero-text, .hero-photo, .hero-subtitle, .hero-links { transition: none !important; }
       }
+
+      /* Lightweight fade-up animations for mobile */
+      @media (max-width: 768px) {
+        .fade-up { opacity: 0; transform: translateY(12px); animation: fadeUp 600ms ease 60ms forwards; }
+        .fade-up.delay-1 { animation-delay: 120ms; }
+        .fade-up.delay-2 { animation-delay: 240ms; }
+      }
+      @keyframes fadeUp {
+        to { opacity: 1; transform: translateY(0); }
+      }
     </style>
   </head>
   <body>
@@ -861,12 +881,12 @@
       </div>
 
       <!-- Photo that slides in -->
-      <div class="hero-photo" id="heroPhoto">
+      <div class="hero-photo fade-up" id="heroPhoto">
         <img src="./MJB_8981.jpg" alt="Kartik Patath" decoding="async" fetchpriority="high" />
       </div>
 
       <!-- Subtitle that appears -->
-      <div class="hero-subtitle" id="heroSubtitle">
+      <div class="hero-subtitle fade-up delay-1" id="heroSubtitle">
         An engineer and curious hobbyist,<br>
         exploring ideas that make technology more<br>
         accessible and impactful<br>
@@ -874,7 +894,7 @@
       </div>
 
       <!-- Links that appear -->
-      <div class="hero-links" id="heroLinks">
+      <div class="hero-links fade-up delay-2" id="heroLinks">
         <a href="https://www.linkedin.com/in/kartiksonu" target="_blank">LinkedIn</a>
         <a href="/uploads/resume.pdf" target="_blank">Resume</a>
         <a href="#contact">Contact</a>
